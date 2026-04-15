@@ -21,7 +21,7 @@
 - Your agent tool is installed and authenticated (see your track file if not)
 - You have a project to work with: use your own, or clone the sample DevBoard project
   ```
-  git clone https://github.com/agentic-sdlc-hackathon/devboard-sample
+  git clone https://github.com/MCKRUZ/devboard-sample
   ```
 - Git is initialized in the project directory (`git init` if needed, then make an initial commit)
 

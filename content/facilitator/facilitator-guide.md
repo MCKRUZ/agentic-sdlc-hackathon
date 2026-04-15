@@ -38,7 +38,7 @@ Distribute this list at least 3 days before the event via email.
 - [ ] A terminal they are comfortable with (bash, zsh, or PowerShell)
 
 **Required before arriving:**
-- [ ] Cloned the DevBoard sample project: `git clone https://github.com/agentic-sdlc-hackathon/devboard-sample`
+- [ ] Cloned the DevBoard sample project: `git clone https://github.com/MCKRUZ/devboard-sample`
   - OR brought their own project they want to work on (must be a real codebase, not a blank repo)
 - [ ] Confirmed the tool opens and responds to a test prompt ("Hello, what files are in this directory?")
 - [ ] API key or subscription active (costs are real -- warn them ahead of time)

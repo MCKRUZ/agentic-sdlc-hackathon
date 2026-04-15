@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Are Tokens?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 40px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 24px; }
+    .footer .ey-logo { height: 24px; }
+
+    .three-part { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1; }
+
+    .part-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .part-number {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,230,0,0.5);
+    }
+    .part-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      color: #FFFFFF;
+    }
+    .part-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* Context window bar */
+    .window-bar-wrap {
+      margin-top: 4px;
+    }
+    .window-bar-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+    .window-bar-outer {
+      width: 100%;
+      height: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .window-bar-inner {
+      width: 62%;
+      height: 100%;
+      background: linear-gradient(90deg, #FFE600 0%, rgba(255,230,0,0.6) 100%);
+      border-radius: 100px;
+    }
+    .window-bar-pct {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFE600;
+    }
+    .window-bar-sub {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+    }
+
+    .warning-callout {
+      background: rgba(255,65,54,0.06);
+      border: 1px solid rgba(255,65,54,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,120,110,0.9);
+      line-height: 1.5;
+    }
+
+    /* Fills fastest list */
+    .fills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .fill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .fill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FFE600;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .fill-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .fill-note {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 06 — Token Management</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+    <h1>Tokens Are the <span class="hl">Unit of Thought</span></h1>
+
+    <div class="three-part">
+
+      <!-- Part 1 -->
+      <div class="part-card">
+        <div class="part-number">Part 01</div>
+        <div class="part-title">What a Token Is</div>
+        <div class="part-body">
+          A token is a chunk of text — roughly <span class="hl">3-4 characters</span> or about three-quarters of a word.
+          <br><br>
+          Every message you send, every file the agent reads, every response it generates — all of it is measured in tokens and <span class="hl">costs money</span>.
+          <br><br>
+          More importantly: tokens are finite. Each model has a maximum context window.
+        </div>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="part-card">
+        <div class="part-number">Part 02</div>
+        <div class="part-title">The Context Window</div>
+        <div class="part-body">
+          <div class="window-bar-wrap">
+            <div class="window-bar-label">Your conversation + files read so far</div>
+            <div class="window-bar-outer">
+              <div class="window-bar-inner"></div>
+            </div>
+            <div class="window-bar-pct">~60% full</div>
+            <div class="window-bar-sub">Token budget used in this session</div>
+          </div>
+          <br>
+          <div class="warning-callout">
+            When it fills up, the agent can't see earlier parts of the conversation. <strong style="color:#FF4136;">Quality drops.</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="part-card">
+        <div class="part-number">Part 03</div>
+        <div class="part-title">What Fills It Fastest</div>
+        <div class="part-body">
+          <div class="fills-list">
+            <div class="fill-item">
+              <div class="fill-dot"></div>
+              <div class="fill-text">
+                Large files read in full
+                <span class="fill-note">A 5,000-line file costs as much as hundreds of turns of conversation</span>
+              </div>
+            </div>
+            <div class="fill-item">
+              <div class="fill-dot"></div>
+              <div class="fill-text">
+                Long conversation history
+                <span class="fill-note">Every turn is in the window — older turns don't disappear on their own</span>
+              </div>
+            </div>
+            <div class="fill-item">
+              <div class="fill-dot"></div>
+              <div class="fill-text">
+                Re-reading the same files repeatedly
+                <span class="fill-note">Each read adds more tokens, even if the file hasn't changed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>30</span>
+    </div>
+  </div>
+</body>
+</html>

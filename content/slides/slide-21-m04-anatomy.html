@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M04 — Anatomy of a Skill File</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 28px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 16px; }
+    .footer .ey-logo { height: 24px; }
+
+    .main-layout { display: flex; gap: 40px; flex: 1; min-height: 0; }
+
+    /* Code panel */
+    .code-panel {
+      flex: 0 0 860px;
+      background: #111115; border: 1px solid rgba(255,230,0,0.3);
+      border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .code-toolbar {
+      background: rgba(255,255,255,0.04); padding: 14px 24px;
+      display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dot-r { width: 12px; height: 12px; border-radius: 50%; background: #FF4136; }
+    .dot-y { width: 12px; height: 12px; border-radius: 50%; background: #FFE600; }
+    .dot-g { width: 12px; height: 12px; border-radius: 50%; background: #2DB757; }
+    .toolbar-name { font-size: 13px; color: rgba(255,255,255,0.4); margin-left: 8px; font-family: 'Courier New', monospace; }
+
+    .code-body { padding: 28px 36px; flex: 1; overflow: hidden; }
+
+    /* Sections highlighted */
+    .code-section { position: relative; }
+    .code-section.hilite { background: rgba(255,230,0,0.06); border-radius: 6px; margin: 0 -8px; padding: 2px 8px; }
+
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 15.5px; line-height: 1.72;
+      color: rgba(255,255,255,0.78);
+      white-space: pre;
+    }
+    .c-h1 { color: #FFE600; font-weight: 700; }
+    .c-h2 { color: #7EC8E3; font-weight: 700; }
+    .c-num { color: rgba(255,230,0,0.6); }
+    .c-comment { color: rgba(255,255,255,0.3); }
+    .c-code { color: #98E4A5; }
+
+    /* Annotation panel */
+    .annotations { flex: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+
+    .annotation {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .ann-connector {
+      display: flex; flex-direction: column; align-items: center; padding-top: 4px;
+    }
+    .ann-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #FFE600; min-width: 10px; min-height: 10px;
+    }
+    .ann-line { width: 2px; flex: 1; background: rgba(255,230,0,0.15); margin-top: 4px; }
+    .ann-body {}
+    .ann-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,230,0,0.7); margin-bottom: 4px;
+    }
+    .ann-desc { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .ann-desc strong { color: rgba(255,255,255,0.9); }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 04 — Skills &amp; Custom Commands</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>What a <span class="hl">Skill File</span> Looks Like</h1>
+
+    <div class="main-layout">
+      <!-- Code panel -->
+      <div class="code-panel">
+        <div class="code-toolbar">
+          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+          <span class="toolbar-name">.claude/commands/commit-message.md</span>
+        </div>
+        <div class="code-body">
+          <pre>
+<span class="c-h1"># commit-message</span>
+
+<span>Generate a conventional commit message for the staged changes.</span>
+
+<span class="c-h2">## When to Use</span>
+<span>After `git add` — before `git commit`.</span>
+
+<span class="c-h2">## Instructions</span>
+<span class="c-num">1.</span> Run `<span class="c-code">git diff --staged</span>` to see staged changes.
+<span class="c-num">2.</span> Identify the type: feat, fix, refactor, docs, test, chore.
+<span class="c-num">3.</span> Write a commit message: `type: imperative description` (under 72 chars).
+<span class="c-num">4.</span> Do not run `git commit` — print the message only for review.
+
+<span class="c-h2">## Output Format</span>
+<span>One line:</span>
+`<span class="c-code">type: description</span>`
+Optionally a blank line and a body paragraph explaining WHY.</pre>
+        </div>
+      </div>
+
+      <!-- Annotations -->
+      <div class="annotations">
+        <div class="annotation">
+          <div class="ann-connector"><div class="ann-dot"></div><div class="ann-line"></div></div>
+          <div class="ann-body">
+            <div class="ann-label">Opening line</div>
+            <div class="ann-desc"><strong>One sentence: what it does.</strong> This becomes the description when listing available skills.</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <div class="ann-connector"><div class="ann-dot"></div><div class="ann-line"></div></div>
+          <div class="ann-body">
+            <div class="ann-label">When to Use</div>
+            <div class="ann-desc"><strong>Context for triggering.</strong> Helps you remember when the skill is relevant, especially weeks later.</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <div class="ann-connector"><div class="ann-dot"></div><div class="ann-line"></div></div>
+          <div class="ann-body">
+            <div class="ann-label">Instructions</div>
+            <div class="ann-desc"><strong>Step-by-step for the agent.</strong> Numbered steps reduce ambiguity and keep output consistent.</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <div class="ann-connector"><div class="ann-dot"></div></div>
+          <div class="ann-body">
+            <div class="ann-label">Output Format</div>
+            <div class="ann-desc"><strong>Exact output shape.</strong> Define this to avoid the agent deciding format on its own every time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>21</span>
+    </div>
+  </div>
+</body>
+</html>

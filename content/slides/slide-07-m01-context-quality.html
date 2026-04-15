@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Garbage In, Generic Out</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .ex-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ex-card.bad { border-top: 3px solid rgba(255,65,54,0.7); }
+    .ex-card.good { border-top: 3px solid rgba(45,183,87,0.7); }
+
+    .ex-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+    .ex-card.bad .ex-label { color: rgba(255,65,54,0.8); }
+    .ex-card.good .ex-label { color: rgba(45,183,87,0.8); }
+
+    .quote-block {
+      font-family: 'Courier New', 'Consolas', monospace;
+      font-size: 19px;
+      font-weight: 600;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 18px 24px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+    }
+
+    .ex-card.bad .quote-block { border-left: 3px solid rgba(255,65,54,0.5); }
+    .ex-card.good .quote-block { border-left: 3px solid rgba(45,183,87,0.5); }
+
+    .result-label {
+      font-size: 13px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+
+    .result-text {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .callout {
+      padding: 22px 36px;
+      background: rgba(255,230,0,0.05);
+      border: 1px solid rgba(255,230,0,0.2);
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 01 — The Agentic Mental Shift</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Context quality</div>
+    <h1>Garbage In, Generic Out</h1>
+
+    <div class="columns">
+      <div class="ex-card bad">
+        <div class="ex-label">Vague Prompt</div>
+        <div class="quote-block">"Fix the bug"</div>
+        <div class="result-label">Result</div>
+        <div class="result-text">Guesses. Edits the wrong thing. Asks 5 clarifying questions before doing anything useful.</div>
+      </div>
+
+      <div class="ex-card good">
+        <div class="ex-label">Context-Rich Prompt</div>
+        <div class="quote-block">"The validateUser() function in src/auth/validators.ts is returning false for valid OAuth tokens. The token format changed in v2.3 — it now includes a 'sub' field instead of 'userId'. Fix the validation logic."</div>
+        <div class="result-label">Result</div>
+        <div class="result-text">Reads the file. Understands the change. Makes the targeted fix — first time.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      The quality of the agent's output is <span class="hl">directly proportional</span> to the quality of <span class="hl">context you give it</span>.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">07</div>
+  </footer>
+</body>
+</html>

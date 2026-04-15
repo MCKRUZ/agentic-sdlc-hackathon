@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LAB 04 — Add an MCP Server</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 24px; }
+    .footer .ey-logo { height: 24px; }
+
+    .lab-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #FFE600;
+      color: #0D0D0F;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+    .subheadline {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 32px;
+      flex: 1;
+    }
+
+    .checklist-card {
+      background: rgba(255,230,0,0.03);
+      border: 1px solid rgba(255,230,0,0.3);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .checklist-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,230,0,0.6);
+      margin-bottom: 20px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-box {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .check-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .check-code {
+      display: block;
+      margin-top: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 10px 14px;
+      line-height: 1.5;
+    }
+
+    .right-col { display: flex; flex-direction: column; gap: 20px; }
+
+    .info-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 30px;
+      flex: 1;
+    }
+    .info-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .info-text {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .goal-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px 28px;
+    }
+    .goal-text {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .goal-text strong { color: #FFE600; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Hands-On Lab</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <div><span class="lab-badge">LAB 04</span></div>
+    <h1>Add an MCP Server</h1>
+    <p class="subheadline">30 minutes &nbsp;·&nbsp; context7 recommended — or choose your own</p>
+
+    <div class="main-grid">
+      <div class="checklist-card">
+        <div class="checklist-title">What You'll Do</div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Install context7
+            <span class="check-code">claude mcp add context7 -- npx -y @upstash/context7-mcp@latest</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Restart the agent
+            <span class="check-code">/exit &nbsp;&nbsp;then&nbsp;&nbsp; claude</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Verify the connection — <span class="hl">/mcp</span> should show context7 as connected
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Ask a documentation question for a library your project uses
+            <span class="check-code">Using the context7 docs, how do I configure connection pooling with better-sqlite3? Show the exact API.<br><br>Using the context7 docs, show me the correct way to handle middleware ordering in Express 5.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Compare the answer against the library's official docs — is it accurate?
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text">
+            Ask a second question for a different library or feature
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="info-card">
+          <div class="info-label">Why This Matters</div>
+          <div class="info-text">
+            The agent's training data has a cutoff date. Library APIs change. MCP servers bridge that gap by fetching documentation at the moment you ask.
+          </div>
+        </div>
+        <div class="goal-card">
+          <div class="info-label">Goal</div>
+          <div class="goal-text">
+            See the difference between <strong>training-data answers</strong> and <strong>live-doc answers</strong>. The gap is real.
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">After This Lab</div>
+          <div class="info-text">
+            You'll have a working MCP server registered in your Claude Code installation, available in every future conversation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>28</span>
+    </div>
+  </div>
+</body>
+</html>

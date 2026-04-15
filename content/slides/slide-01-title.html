@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agentic SDLC Hackathon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    /* Background geometric element */
+    .bg-circle {
+      position: absolute;
+      top: -200px;
+      right: -150px;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,230,0,0.06) 0%, rgba(255,230,0,0.02) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .bg-ring {
+      position: absolute;
+      top: -100px;
+      right: -50px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,230,0,0.08);
+      pointer-events: none;
+    }
+    .bg-ring-2 {
+      position: absolute;
+      top: 50px;
+      right: 100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    .content {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1920px; height: 1080px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 100px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 48px;
+    }
+
+    .hero-headline {
+      font-size: 108px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 1.0;
+      margin-bottom: 0;
+    }
+    .hero-headline .line1 { color: #FFFFFF; display: block; }
+    .hero-headline .line2 { color: #FFE600; display: block; }
+
+    .yellow-rule {
+      width: 120px;
+      height: 3px;
+      background: #FFE600;
+      margin: 40px 0;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+
+    .metadata {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .logo-area {
+      position: absolute;
+      bottom: 60px;
+      right: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .logo-area img {
+      height: 32px;
+      width: auto;
+    }
+
+    .tagline {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circle"></div>
+  <div class="bg-ring"></div>
+  <div class="bg-ring-2"></div>
+
+  <div class="content">
+    <div class="section-label">Hands-On Workshop</div>
+
+    <div class="hero-headline">
+      <span class="line1">Agentic SDLC</span>
+      <span class="line2">Hackathon</span>
+    </div>
+
+    <div class="yellow-rule"></div>
+
+    <div class="subtitle">A hands-on introduction to agentic software development</div>
+    <div class="metadata">7 Hours &nbsp;&middot;&nbsp; Tool-Agnostic Core</div>
+  </div>
+
+  <div class="logo-area">
+    <img src="ey-logo-dark.png" alt="EY" />
+    <div class="tagline">Shape the future with confidence</div>
+  </div>
+
+  <div style="position:absolute;bottom:40px;left:100px;right:100px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.3);">
+    <span>Agentic SDLC Hackathon</span>
+    <span>1</span>
+  </div>
+</body>
+</html>

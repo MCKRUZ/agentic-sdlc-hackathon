@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What the Agent Sees</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .col-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .col-card.reads { border-top: 3px solid rgba(45,183,87,0.6); }
+    .col-card.not   { border-top: 3px solid rgba(255,65,54,0.4); }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .col-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .col-card.reads .col-dot { background: #2DB757; }
+    .col-card.not .col-dot   { background: #FF4136; }
+
+    .col-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+    .col-card.reads .col-label { color: rgba(45,183,87,0.8); }
+    .col-card.not .col-label   { color: rgba(255,65,54,0.7); }
+
+    .col-title {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      flex: 1;
+    }
+
+    .item-list li {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      line-height: 1.4;
+    }
+
+    .item-list li .icon {
+      font-size: 16px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .col-card.reads .item-list li .icon { color: #2DB757; }
+    .col-card.not .item-list li .icon   { color: rgba(255,65,54,0.7); }
+
+    .token-note {
+      padding: 18px 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,230,0,0.15);
+      border-radius: 10px;
+      font-size: 17px; font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 02 — Out-of-the-Box Usage</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Agent context scope</div>
+    <h1>The Agent Reads Your <span class="hl">Actual Code</span></h1>
+
+    <div class="columns">
+      <div class="col-card reads">
+        <div class="col-header">
+          <div class="col-dot"></div>
+          <div class="col-label">What it reads on first launch</div>
+        </div>
+        <div class="col-title">In scope</div>
+        <ul class="item-list">
+          <li><span class="icon">&#10003;</span> Directory structure</li>
+          <li><span class="icon">&#10003;</span> File contents (on request)</li>
+          <li><span class="icon">&#10003;</span> Git history</li>
+          <li><span class="icon">&#10003;</span> Package files (package.json, .csproj, etc.)</li>
+          <li><span class="icon">&#10003;</span> README and docs</li>
+          <li><span class="icon">&#10003;</span> Your conversation history in this session</li>
+        </ul>
+      </div>
+
+      <div class="col-card not">
+        <div class="col-header">
+          <div class="col-dot"></div>
+          <div class="col-label">What it does NOT automatically read</div>
+        </div>
+        <div class="col-title">Out of scope</div>
+        <ul class="item-list">
+          <li><span class="icon">&#215;</span> Files you didn't ask about</li>
+          <li><span class="icon">&#215;</span> External systems</li>
+          <li><span class="icon">&#215;</span> Other projects</li>
+          <li><span class="icon">&#215;</span> Previous sessions (context resets each time)</li>
+          <li><span class="icon">&#215;</span> Your mind</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="token-note">
+      Every file the agent reads consumes <span class="hl">tokens</span>. It is selective by default — and that's intentional.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">10</div>
+  </footer>
+</body>
+</html>

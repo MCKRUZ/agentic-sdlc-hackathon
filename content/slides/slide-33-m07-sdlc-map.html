@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agents Across the SDLC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 44px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 24px; }
+    .footer .ey-logo { height: 24px; }
+
+    /* Timeline container */
+    .timeline {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      flex: 1;
+    }
+
+    .phase-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Connector arrow between blocks */
+    .phase-block:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -16px;
+      top: 32px;
+      font-size: 24px;
+      color: rgba(255,255,255,0.2);
+      z-index: 10;
+    }
+
+    .phase-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 0 12px;
+    }
+    .phase-pill {
+      background: rgba(255,230,0,0.1);
+      border: 1px solid rgba(255,230,0,0.35);
+      border-radius: 100px;
+      padding: 8px 24px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFE600;
+      white-space: nowrap;
+    }
+
+    .phase-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 24px 20px;
+      width: 100%;
+      margin: 0 8px;
+      flex: 1;
+    }
+
+    .use-case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .use-case-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .use-case-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .use-case-text {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* Highlight the CODE phase as "core" */
+    .phase-block.core .phase-card {
+      border-color: rgba(255,230,0,0.2);
+      background: rgba(255,230,0,0.03);
+    }
+    .phase-block.core .phase-pill {
+      background: rgba(255,230,0,0.18);
+    }
+    .core-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,230,0,0.5);
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 07 — Agentic SDLC</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+    <h1>Every Phase of the SDLC Has an <span class="hl">Agent Use Case</span></h1>
+
+    <div class="timeline">
+
+      <!-- PLAN -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <div class="phase-pill">Plan</div>
+        </div>
+        <div class="phase-card">
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Draft technical specs from requirements</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Break down tickets into concrete tasks</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Identify edge cases before writing code</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE -->
+      <div class="phase-block core">
+        <div class="phase-header">
+          <div class="phase-pill">Code</div>
+          <div class="core-badge">Core use case</div>
+        </div>
+        <div class="phase-card">
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot" style="background:#FFE600;"></div>
+              <div class="use-case-text">Write, refactor, and debug</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot" style="background:#FFE600;"></div>
+              <div class="use-case-text">The starting point for most developers new to agentic tools</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <div class="phase-pill">Review</div>
+        </div>
+        <div class="phase-card">
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Check diff for logic errors</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Flag security issues automatically</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Verify convention compliance against your CLAUDE.md</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEST -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <div class="phase-pill">Test</div>
+        </div>
+        <div class="phase-card">
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Generate test stubs from function signatures</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Identify untested branches in coverage reports</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Write edge case tests from spec</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHIP -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <div class="phase-pill">Ship</div>
+        </div>
+        <div class="phase-card">
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Generate changelog from git history</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Update README sections after feature changes</div>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot"></div>
+              <div class="use-case-text">Write inline comments for complex logic</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>33</span>
+    </div>
+  </div>
+</body>
+</html>

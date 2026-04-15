@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M03 — What Is a Context File?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 40px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 24px; }
+    .footer .ey-logo { height: 24px; }
+    .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 36px; }
+    .card.accent { border-color: rgba(255,230,0,0.3); background: rgba(255,230,0,0.02); }
+
+    .columns { display: flex; gap: 32px; flex: 1; min-height: 0; }
+    .col { flex: 1; }
+
+    .card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 20px;
+    }
+
+    .def-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .def-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 18px; line-height: 1.5; color: rgba(255,255,255,0.85);
+    }
+    .dot {
+      width: 6px; height: 6px; min-width: 6px; border-radius: 50%;
+      background: #FFE600; margin-top: 9px;
+    }
+
+    .tool-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .tool-row {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 14px;
+    }
+    .tool-name { font-size: 14px; color: rgba(255,255,255,0.45); min-width: 130px; }
+    .tool-file {
+      font-family: 'Courier New', monospace; font-size: 15px;
+      color: #FFE600; font-weight: 600;
+    }
+
+    /* Code card styling */
+    .code-card {
+      background: #111115; border: 1px solid rgba(255,230,0,0.3);
+      border-radius: 16px; overflow: hidden; height: 100%; display: flex; flex-direction: column;
+    }
+    .code-header {
+      background: rgba(255,255,255,0.04); padding: 14px 24px;
+      display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dot-red { width: 12px; height: 12px; border-radius: 50%; background: #FF4136; }
+    .dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #FFE600; }
+    .dot-green { width: 12px; height: 12px; border-radius: 50%; background: #2DB757; }
+    .filename { font-size: 13px; color: rgba(255,255,255,0.4); margin-left: 8px; font-family: 'Courier New', monospace; }
+
+    .code-body { padding: 28px 32px; flex: 1; overflow: hidden; }
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px; line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      white-space: pre-wrap;
+    }
+    .code-comment { color: rgba(255,255,255,0.3); }
+    .code-heading { color: #FFE600; font-weight: 700; }
+    .code-key { color: #7EC8E3; }
+    .code-value { color: rgba(255,255,255,0.75); }
+    .code-hl { color: #FFE600; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 03 — Project Context Files</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>A File the Agent Reads <span class="hl">Every Time</span></h1>
+
+    <div class="columns">
+      <!-- LEFT: Definition -->
+      <div class="col" style="flex: 0 0 680px;">
+        <div class="card" style="height: 100%;">
+          <div class="card-label">What It Is</div>
+          <ul class="def-list">
+            <li><div class="dot"></div><span>A markdown file committed to your repo root</span></li>
+            <li><div class="dot"></div><span>The agent reads it at the start of <span class="hl">every conversation</span></span></li>
+            <li><div class="dot"></div><span>Gives the agent persistent knowledge: your stack, conventions, constraints</span></li>
+          </ul>
+
+          <div style="margin-top: 32px;">
+            <div class="card-label" style="margin-bottom: 16px;">Name depends on the tool</div>
+            <div class="tool-rows">
+              <div class="tool-row">
+                <span class="tool-name">Claude Code</span>
+                <span style="color: rgba(255,255,255,0.2);">→</span>
+                <span class="tool-file">CLAUDE.md</span>
+              </div>
+              <div class="tool-row">
+                <span class="tool-name">Cursor</span>
+                <span style="color: rgba(255,255,255,0.2);">→</span>
+                <span class="tool-file">.cursor/rules</span>
+              </div>
+              <div class="tool-row">
+                <span class="tool-name">Copilot</span>
+                <span style="color: rgba(255,255,255,0.2);">→</span>
+                <span class="tool-file">.github/copilot-instructions.md</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Code example -->
+      <div class="col">
+        <div class="code-card">
+          <div class="code-header">
+            <div class="dot-red"></div>
+            <div class="dot-yellow"></div>
+            <div class="dot-green"></div>
+            <span class="filename">CLAUDE.md</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="code-heading"># MyApp — Agent Context</span>
+
+<span class="code-heading">## Tech Stack</span>
+<span class="code-value">- TypeScript 5.4 + Node 20</span>
+<span class="code-value">- Express 4.x, PostgreSQL via Prisma</span>
+
+<span class="code-heading">## Conventions</span>
+<span class="code-value">- All errors returned as <span class="code-hl">Result&lt;T&gt;</span></span>
+<span class="code-value">- Tests live next to code they test</span>
+
+<span class="code-heading">## Never Do This</span>
+<span class="code-value">- Do not add packages without asking</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>15</span>
+    </div>
+  </div>
+</body>
+</html>

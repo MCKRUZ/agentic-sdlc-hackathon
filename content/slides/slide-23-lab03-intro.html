@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LAB 03 — Build a Skill</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+    .card.accent { border-color: rgba(255,230,0,0.3); background: rgba(255,230,0,0.025); border: 1px solid; border-radius: 16px; padding: 36px; }
+
+    .lab-badge {
+      display: inline-flex; align-items: center;
+      background: #FFE600; color: #0D0D0F;
+      font-size: 40px; font-weight: 900; letter-spacing: -1px;
+      padding: 10px 36px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 64px; font-weight: 800; line-height: 1.0; letter-spacing: -2px; margin-bottom: 12px; }
+    .subheadline { font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.6); margin-bottom: 36px; }
+
+    .checklist-title { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 14px; font-size: 18px; font-weight: 400; line-height: 1.4; color: rgba(255,255,255,0.88); }
+    .checkbox { width: 20px; height: 20px; min-width: 20px; border: 2px solid rgba(255,230,0,0.5); border-radius: 4px; margin-top: 2px; }
+
+    .code-inline {
+      font-family: 'Courier New', monospace; font-size: 14px;
+      background: rgba(255,255,255,0.07); color: #FFE600;
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .cmd-inline {
+      font-family: 'Courier New', monospace; font-size: 14px;
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.75);
+      padding: 2px 8px; border-radius: 4px;
+    }
+
+    .bottom-note { margin-top: 24px; font-size: 17px; color: rgba(255,255,255,0.5); font-style: italic; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Hands-On Lab</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <div style="display: flex; gap: 72px; flex: 1; min-height: 0;">
+      <!-- Left -->
+      <div style="flex: 0 0 500px; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 8px;">
+        <div class="lab-badge">LAB 03</div>
+        <h1>Build a<br>Skill</h1>
+        <div class="subheadline">35 minutes &nbsp;·&nbsp; You'll leave with a working<br>skill <span class="hl">committed to your repo</span></div>
+        <div style="margin-top: auto; padding-bottom: 8px;">
+          <div style="width: 60px; height: 4px; background: #FFE600; border-radius: 2px; margin-bottom: 16px;"></div>
+          <div style="font-size: 15px; color: rgba(255,255,255,0.35); line-height: 1.6;">
+            Pick something you do repeatedly.<br>One excellent skill beats six mediocre ones.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Checklist -->
+      <div style="flex: 1; display: flex; flex-direction: column;">
+        <div class="card accent" style="flex: 1;">
+          <div class="checklist-title">What You'll Do</div>
+          <ul class="checklist">
+            <li>
+              <div class="checkbox"></div>
+              <span>Create the skills directory: <span class="cmd-inline">mkdir -p .claude/commands</span></span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Choose a task you do repeatedly (commit messages, PR descriptions, test stubs...)</span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Write a skill file in <span class="hl">.claude/commands/your-skill-name.md</span></span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Include: what it does, step-by-step instructions, <span class="hl">output format</span></span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Invoke it: <span class="code-inline">/your-skill-name</span></span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Review the output &mdash; does it do what you wanted?</span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Edit the skill and invoke again (<span class="hl">iterate at least once</span>)</span>
+            </li>
+            <li>
+              <div class="checkbox"></div>
+              <span>Commit: <span class="cmd-inline">git add .claude/commands/ &amp;&amp; git commit -m "feat: add [skill-name] skill"</span></span>
+            </li>
+          </ul>
+          <div class="bottom-note">
+            Goal: One <span class="hl">working, committed</span> skill. Quality over quantity &mdash; make one skill excellent.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>23</span>
+    </div>
+  </div>
+</body>
+</html>

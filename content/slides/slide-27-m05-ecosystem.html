@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The MCP Ecosystem</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 36px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 24px; }
+    .footer .ey-logo { height: 24px; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+    .server-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .server-card:hover { border-color: rgba(255,230,0,0.2); }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .server-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFE600;
+      font-family: 'Courier New', monospace;
+      letter-spacing: -0.5px;
+    }
+    .server-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,230,0,0.08);
+      border: 1px solid rgba(255,230,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-desc-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+    }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .install-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 8px;
+    }
+    .install-code {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 10px 12px;
+      line-height: 1.5;
+      word-break: break-all;
+    }
+    .requires-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,65,54,0.08);
+      border: 1px solid rgba(255,65,54,0.2);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,100,90,0.9);
+      font-family: 'Courier New', monospace;
+    }
+    .requires-badge::before {
+      content: 'KEY';
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: rgba(255,100,90,0.6);
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 05 — MCP Servers</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+    <h1>The Servers Worth <span class="hl">Knowing</span></h1>
+
+    <div class="card-grid">
+
+      <!-- context7 -->
+      <div class="server-card">
+        <div class="card-top">
+          <div class="server-name">context7</div>
+          <div class="server-icon">📚</div>
+        </div>
+        <div>
+          <div class="card-desc-label">What it does</div>
+          <div class="card-desc">Fetches up-to-date docs for any library your project uses</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="install-label">Install</div>
+          <div class="install-code">claude mcp add context7 -- npx -y @upstash/context7-mcp@latest</div>
+        </div>
+      </div>
+
+      <!-- filesystem -->
+      <div class="server-card">
+        <div class="card-top">
+          <div class="server-name">filesystem</div>
+          <div class="server-icon">🗂</div>
+        </div>
+        <div>
+          <div class="card-desc-label">What it does</div>
+          <div class="card-desc">Gives the agent access to paths outside the project directory</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="install-label">Install</div>
+          <div class="install-code">claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path</div>
+        </div>
+      </div>
+
+      <!-- github -->
+      <div class="server-card">
+        <div class="card-top">
+          <div class="server-name">github</div>
+          <div class="server-icon">⚡</div>
+        </div>
+        <div>
+          <div class="card-desc-label">What it does</div>
+          <div class="card-desc">Query your GitHub data — issues, PR comments, commit history</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="install-label">Requires</div>
+          <div class="requires-badge">GITHUB_TOKEN</div>
+        </div>
+      </div>
+
+      <!-- postgres -->
+      <div class="server-card">
+        <div class="card-top">
+          <div class="server-name">postgres</div>
+          <div class="server-icon">🗄</div>
+        </div>
+        <div>
+          <div class="card-desc-label">What it does</div>
+          <div class="card-desc">Run read queries against your database from within a conversation</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="install-label">Install</div>
+          <div class="install-code">claude mcp add postgres -- npx -y @modelcontextprotocol/server-postgres postgresql://...</div>
+        </div>
+      </div>
+
+      <!-- brave-search -->
+      <div class="server-card">
+        <div class="card-top">
+          <div class="server-name">brave-search</div>
+          <div class="server-icon">🔍</div>
+        </div>
+        <div>
+          <div class="card-desc-label">What it does</div>
+          <div class="card-desc">Search the web for current information during a conversation</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="install-label">Requires</div>
+          <div class="requires-badge">BRAVE_API_KEY</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>27</span>
+    </div>
+  </div>
+</body>
+</html>

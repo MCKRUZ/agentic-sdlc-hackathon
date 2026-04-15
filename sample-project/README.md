@@ -1,77 +1,43 @@
 # DevBoard
 
-A minimal task-board API built with .NET 9 Minimal APIs and EF Core (in-memory). Used as an instructor demo for agentic development workshops.
+Minimal task-tracking app. Used for live demos in the Agentic SDLC Hackathon.
 
-## Prerequisites
+## Setup
 
-- .NET 9 SDK — https://dot.net/download
-
-No database setup required. The in-memory database is seeded automatically on startup.
-
-## Run the API
+Requirements: Node.js 20+
 
 ```bash
-dotnet run --project src/DevBoard.Api
+npm install
+npm start
 ```
 
-The API starts on `http://localhost:5000` by default. Open that URL in a browser to see the board UI.
+Open http://localhost:3000
 
-The OpenAPI spec is available at `http://localhost:5000/openapi/v1.json` in Development mode.
-
-## Run the Tests
+## Run tests
 
 ```bash
-dotnet test
+npm test
 ```
 
-## API Reference
-
-### Work Items
+## API
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/workitems` | List all work items. Query params: `assignee`, `sort` (`oldest`, `title`) |
-| GET | `/api/workitems/{id}` | Get a single work item with its comments |
-| POST | `/api/workitems` | Create a work item |
-| PUT | `/api/workitems/{id}` | Update a work item (enforces status transition rules) |
-| DELETE | `/api/workitems/{id}` | Delete a work item |
-| GET | `/api/workitems/status/{status}` | Filter by status (`todo`, `in-progress`, `done`) |
+| GET | /api/tasks | List all tasks |
+| GET | /api/tasks?status=todo | Filter by status |
+| POST | /api/tasks | Create task |
+| PATCH | /api/tasks/:id | Update task |
+| DELETE | /api/tasks/:id | Delete task |
+| GET | /api/users | List all users |
+| POST | /api/users | Create user |
+| GET | /api/users/:id | Get user with tasks |
+| DELETE | /api/users/:id | Delete user |
 
-### Comments
+## What the Demo Shows
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/workitems/{id}/comments` | List comments on a work item |
-| POST | `/api/workitems/{id}/comments` | Add a comment |
-| DELETE | `/api/workitems/{id}/comments/{commentId}` | Delete a comment |
-
-### Status Transition Rules
-
-Valid transitions:
-- `todo` → `in-progress`
-- `in-progress` → `todo` or `done`
-- `done` → `in-progress`
-
-Attempting an invalid transition returns `400 Bad Request`.
-
-## Project Structure
-
-```
-sample-project/
-├── DevBoard.sln
-├── DEMO-NOTES.md          # Instructor guide — teaching moments and demo prompts
-├── src/
-│   └── DevBoard.Api/
-│       ├── Program.cs
-│       ├── Models/        # WorkItem, Comment
-│       ├── Data/          # DevBoardContext (EF Core)
-│       ├── Endpoints/     # WorkItemEndpoints, CommentEndpoints
-│       └── wwwroot/       # Static frontend (index.html)
-└── tests/
-    └── DevBoard.Api.Tests/
-        └── WorkItemEndpointTests.cs
-```
-
-## Notes for Instructors
-
-This project is intentionally imperfect — it contains four teaching moments that an AI agent can identify and fix during a live demo. See **DEMO-NOTES.md** for the full list with copy-paste prompts.
+This project is intentionally imperfect. The agent demos use it to find and fix:
+- Missing input validation on several endpoints
+- No cascade delete when deleting users who have tasks
+- No authentication on any endpoint
+- No request logging middleware
+- The GET /api/users/:id endpoint doesn't handle the case where the user doesn't exist

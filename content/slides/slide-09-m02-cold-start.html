@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cold Start</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 48px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 32px;
+      line-height: 1.1;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #FFE600;
+      color: #0D0D0F;
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 22px; font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .step-subtitle {
+      font-size: 15px; font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .terminal-block {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-family: 'Courier New', 'Consolas', monospace;
+      font-size: 17px;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .terminal-block .prompt {
+      color: #2DB757;
+    }
+
+    .terminal-block .cmd {
+      color: #FFFFFF;
+    }
+
+    .terminal-block .query {
+      color: #FFE600;
+      font-style: italic;
+    }
+
+    .terminal-block .comment {
+      color: rgba(255,255,255,0.4);
+      font-size: 15px;
+    }
+
+    .step-note {
+      font-size: 17px; font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .bottom-note {
+      padding: 18px 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 17px; font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 02 — Out-of-the-Box Usage</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Zero-config workflow</div>
+    <h1>Open a Project. Start the Tool. Ask a Question.</h1>
+
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-subtitle">Navigate to your project</div>
+        <div class="step-title">Launch the agent</div>
+        <div class="terminal-block">
+          <span class="prompt">$ </span><span class="cmd">cd my-project</span><br>
+          <span class="prompt">$ </span><span class="cmd">claude</span><br>
+          <span class="comment"># That's it. You're in.</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-subtitle">Ask a navigation question</div>
+        <div class="step-title">Orient the agent</div>
+        <div class="terminal-block">
+          <span class="query">"What are the main entry points for this application?"</span>
+        </div>
+        <div class="step-note">Ground it in your actual structure before asking it to change anything.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-subtitle">Review the grounded response</div>
+        <div class="step-title">Trust what's cited</div>
+        <div class="step-note">
+          It reads <span class="hl">actual files</span>. It cites <span class="hl">actual paths</span>.
+          No hallucination — just your code, reflected back with context.
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-note">
+      No config. No context file. No setup beyond install. This is the baseline.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">09</div>
+  </footer>
+</body>
+</html>

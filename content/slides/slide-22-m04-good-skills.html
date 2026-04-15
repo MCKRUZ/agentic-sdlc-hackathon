@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M04 — Best Candidates for Skills</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; }
+
+    .skill-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 28px 28px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: rgba(255,230,0,0.3); }
+
+    .skill-icon { font-size: 28px; line-height: 1; }
+
+    .skill-title { font-size: 22px; font-weight: 700; color: #FFFFFF; line-height: 1.2; }
+
+    .skill-desc { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.5; flex: 1; }
+
+    .skill-invocation {
+      font-family: 'Courier New', monospace; font-size: 14px;
+      color: #FFE600; background: rgba(255,230,0,0.08);
+      padding: 5px 12px; border-radius: 6px; width: fit-content;
+      font-weight: 600;
+    }
+
+    .callout {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 18px 28px;
+      font-size: 17px; color: rgba(255,255,255,0.5); font-style: italic; line-height: 1.5;
+      margin-top: 20px;
+    }
+    .callout strong { color: rgba(255,255,255,0.82); font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 04 — Skills &amp; Custom Commands</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>Best <span class="hl">Candidates</span> for Skills</h1>
+
+    <div class="grid">
+      <div class="skill-card">
+        <div class="skill-icon">&#128196;</div>
+        <div class="skill-title">Commit Messages</div>
+        <div class="skill-desc">Generate Conventional Commits from staged diff. Type before every commit.</div>
+        <div class="skill-invocation">/commit-message</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128203;</div>
+        <div class="skill-title">PR Description</div>
+        <div class="skill-desc">Summarize changes, write a test plan, and format for your team's PR template.</div>
+        <div class="skill-invocation">/pr-description</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#9881;</div>
+        <div class="skill-title">Test Stubs</div>
+        <div class="skill-desc">Generate test file skeleton from a function signature — ready to fill in.</div>
+        <div class="skill-invocation">/test-stubs</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128269;</div>
+        <div class="skill-title">Code Review</div>
+        <div class="skill-desc">Check diff against project conventions from CLAUDE.md before opening a PR.</div>
+        <div class="skill-invocation">/code-review</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128221;</div>
+        <div class="skill-title">Changelog Entry</div>
+        <div class="skill-desc">Summarize recent commits into a formatted changelog entry for release notes.</div>
+        <div class="skill-invocation">/changelog-entry</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#128030;</div>
+        <div class="skill-title">Bug Report</div>
+        <div class="skill-desc">Write a reproduction case and structured bug report from a failing test output.</div>
+        <div class="skill-invocation">/bug-report</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      Skills are <strong>plain files</strong>. Version-controlled. Team-shared. Iterable like code.
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>22</span>
+    </div>
+  </div>
+</body>
+</html>

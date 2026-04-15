@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Agent Asks Before It Acts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+      margin-bottom: 22px;
+    }
+
+    .tier-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .tier-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tier-label {
+      font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .tier-title {
+      font-size: 26px; font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .tier-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .tier-list li {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.4;
+    }
+
+    .tier-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* Green tier */
+    .tier-green { border-top: 3px solid #2DB757; }
+    .tier-green .tier-dot { background: #2DB757; }
+    .tier-green .tier-label { color: #2DB757; }
+    .tier-green .tier-list li::before { background: #2DB757; }
+
+    /* Yellow tier */
+    .tier-yellow { border-top: 3px solid #FFE600; }
+    .tier-yellow .tier-dot { background: #FFE600; }
+    .tier-yellow .tier-label { color: #FFE600; }
+    .tier-yellow .tier-list li::before { background: #FFE600; }
+
+    /* Red tier */
+    .tier-red { border-top: 3px solid #FF4136; }
+    .tier-red .tier-dot { background: #FF4136; }
+    .tier-red .tier-label { color: #FF4136; }
+    .tier-red .tier-list li::before { background: #FF4136; }
+
+    .bottom-note {
+      font-size: 16px; font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 01 — The Agentic Mental Shift</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Permission model</div>
+    <h1>The Agent Asks Before It Acts</h1>
+
+    <div class="columns">
+      <div class="tier-card tier-green">
+        <div class="tier-header">
+          <div class="tier-dot"></div>
+          <div class="tier-label">Green — Automatic</div>
+        </div>
+        <div class="tier-title">No confirmation needed</div>
+        <ul class="tier-list">
+          <li>Read files and directories</li>
+          <li>Search the codebase</li>
+          <li>Explain code</li>
+          <li>Run tests (when you've approved)</li>
+        </ul>
+      </div>
+
+      <div class="tier-card tier-yellow">
+        <div class="tier-header">
+          <div class="tier-dot"></div>
+          <div class="tier-label">Yellow — Asks First</div>
+        </div>
+        <div class="tier-title">Requires your go-ahead</div>
+        <ul class="tier-list">
+          <li>Create or modify files</li>
+          <li>Run shell commands</li>
+          <li>Install packages</li>
+          <li>Make multi-file changes</li>
+        </ul>
+      </div>
+
+      <div class="tier-card tier-red">
+        <div class="tier-header">
+          <div class="tier-dot"></div>
+          <div class="tier-label">Red — Always Confirms</div>
+        </div>
+        <div class="tier-title">Explicit confirmation, always</div>
+        <ul class="tier-list">
+          <li>Delete files or branches</li>
+          <li>Force-push to git</li>
+          <li>Modify production config</li>
+          <li>Run destructive operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-note">
+      You set the permission level. The tool doesn't act autonomously unless you tell it to.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">06</div>
+  </footer>
+</body>
+</html>

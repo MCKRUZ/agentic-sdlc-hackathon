@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M05 — MCP Servers</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); position: absolute; bottom: 80px; left: 100px; right: 100px; }
+    .ey-logo { height: 24px; }
+
+    /* Diagonal accent lines */
+    .bg-accent {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .bg-accent::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: 280px;
+      width: 3px;
+      height: 900px;
+      background: #FFE600;
+      opacity: 0.12;
+      transform: rotate(20deg);
+    }
+    .bg-accent::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: 240px;
+      width: 1px;
+      height: 900px;
+      background: #FFE600;
+      opacity: 0.06;
+      transform: rotate(20deg);
+    }
+
+    .module-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+    .module-number {
+      font-size: 200px;
+      font-weight: 900;
+      color: #FFE600;
+      line-height: 1;
+      letter-spacing: -8px;
+      margin-bottom: 8px;
+      opacity: 0.95;
+    }
+    .headline {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      max-width: 760px;
+      line-height: 1.5;
+      margin-bottom: 48px;
+    }
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,230,0,0.1);
+      border: 1px solid rgba(255,230,0,0.3);
+      border-radius: 100px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #FFE600;
+    }
+    .time-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FFE600;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="bg-accent"></div>
+
+    <div class="module-label">Module Five</div>
+    <div class="module-number">05</div>
+    <h1 class="headline">MCP Servers</h1>
+    <p class="subtitle">Give your agent access to live data — not just training memory</p>
+    <div>
+      <span class="time-badge">30 min + Demo</span>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>25</span>
+    </div>
+  </div>
+</body>
+</html>

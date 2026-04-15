@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M03 — Project Context Files</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .footer {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      padding: 0 100px 40px 100px; margin-top: auto;
+    }
+    .footer .ey-logo { height: 24px; }
+
+    /* Diagonal yellow bar */
+    .accent-bar {
+      position: absolute; top: 0; right: 0;
+      width: 8px; height: 100%;
+      background: linear-gradient(180deg, #FFE600 0%, rgba(255,230,0,0.1) 100%);
+    }
+
+    .main-area {
+      flex: 1; display: flex; align-items: center;
+      padding: 0 100px;
+      position: relative;
+    }
+
+    .module-number {
+      font-size: 260px; font-weight: 900; line-height: 1;
+      color: #FFE600;
+      position: absolute; right: 160px; top: 50%;
+      transform: translateY(-52%);
+      opacity: 0.15;
+      letter-spacing: -12px;
+      user-select: none;
+    }
+
+    .module-number-fg {
+      font-size: 200px; font-weight: 900; line-height: 1;
+      color: #FFE600;
+      position: absolute; right: 160px; top: 50%;
+      transform: translateY(-52%);
+      letter-spacing: -8px;
+      user-select: none;
+    }
+
+    .text-block { position: relative; z-index: 2; max-width: 920px; }
+
+    .module-label {
+      font-size: 13px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 96px; font-weight: 900; line-height: 0.95;
+      letter-spacing: -4px; margin-bottom: 32px;
+    }
+
+    .subtitle {
+      font-size: 26px; font-weight: 400; line-height: 1.5;
+      color: rgba(255,255,255,0.6); margin-bottom: 40px;
+    }
+
+    .time-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,230,0,0.4); border-radius: 100px;
+      padding: 10px 24px;
+      font-size: 14px; font-weight: 600; letter-spacing: 1px;
+      color: #FFE600;
+    }
+
+    .header-strip {
+      padding: 40px 100px 0 100px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header-strip">
+      <span class="slide-label">Module Three</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <div class="main-area">
+      <!-- Background number -->
+      <div class="module-number">03</div>
+
+      <div class="text-block">
+        <div class="module-label">Module Three</div>
+        <h1>Project<br><span class="hl">Context</span><br>Files</h1>
+        <div class="subtitle">Give your agent persistent knowledge<br>about your project</div>
+        <div class="time-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="#FFE600" stroke-width="1.5"/>
+            <path d="M8 4.5V8.5L10.5 10" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          20 min + Demo
+        </div>
+      </div>
+    </div>
+
+    <!-- Right accent bar -->
+    <div class="accent-bar"></div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>14</span>
+    </div>
+  </div>
+</body>
+</html>

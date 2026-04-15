@@ -23,7 +23,7 @@ Complete these before you arrive. If something is not working, flag it at regist
 - [ ] VS Code or another editor you know well
 
 **Required before arriving:**
-- [ ] DevBoard sample project cloned: `git clone https://github.com/[your-org]/devboard-sample`
+- [ ] DevBoard sample project cloned: `git clone https://github.com/agentic-sdlc-hackathon/devboard-sample`
   - OR your own project open and ready (must have real code in it)
 - [ ] Confirmed tool works: open your project, start the tool, type "What files are in this directory?" and get a response
 

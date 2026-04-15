@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Is MCP?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 40px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 32px; }
+    .footer .ey-logo { height: 24px; }
+    .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 36px; }
+    .card.accent { border-color: rgba(255,230,0,0.3); background: rgba(255,230,0,0.04); }
+
+    .split { display: grid; grid-template-columns: 1fr 480px; gap: 48px; flex: 1; }
+
+    .left-col { display: flex; flex-direction: column; gap: 24px; }
+
+    .definition-text {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+    }
+    .definition-text p { margin-bottom: 16px; }
+    .definition-text p:last-child { margin-bottom: 0; }
+
+    .callout-card {
+      background: rgba(255,230,0,0.04);
+      border: 1px solid rgba(255,230,0,0.3);
+      border-radius: 12px;
+      padding: 28px 32px;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+    .callout-card .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,230,0,0.7);
+      margin-bottom: 12px;
+    }
+
+    /* Architecture diagram */
+    .right-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .diagram-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .diagram-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+    .diagram-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      justify-content: center;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+    }
+    .flow-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .flow-box.yellow {
+      background: rgba(255,230,0,0.1);
+      border-color: rgba(255,230,0,0.4);
+      color: #FFE600;
+    }
+    .flow-arrow {
+      font-size: 18px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1;
+    }
+    .flow-indent {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(255,255,255,0.08);
+      margin-left: 24px;
+    }
+    .flow-source {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .flow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+    .flow-dot.yellow { background: #FFE600; }
+    .flow-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+    }
+    .flow-source-name {
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      color: rgba(255,255,255,0.5);
+    }
+    .flow-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .flow-pair-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .flow-pair-item .server { font-size: 13px; font-weight: 700; color: rgba(255,230,0,0.8); font-family: 'Courier New', monospace; }
+    .flow-pair-item .source { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .flow-connector {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      justify-content: center;
+      padding: 4px 0;
+    }
+    .connector-line {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.15);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 05 — MCP Servers</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+    <h1>The Agent's Ability to <span class="hl">Look Things Up</span></h1>
+
+    <div class="split">
+      <div class="left-col">
+        <div class="definition-text">
+          <p>
+            <span class="hl">Model Context Protocol</span> is a standard that lets your agent connect to external servers — to fetch live data, query databases, search documentation, or call APIs.
+          </p>
+          <p>
+            You <span class="hl">register a server once</span>. It's available in every conversation. The agent tells you when it's calling an MCP server and what it retrieved.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <div class="label">Key Distinction</div>
+          MCP doesn't add AI capability. It adds <span class="hl">current, accurate data</span>. The agent's knowledge cutoff was months ago. Your libraries have been updated since then.
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="diagram-card">
+          <div class="diagram-label">How It Works</div>
+          <div class="diagram-flow">
+
+            <div style="text-align:center; margin-bottom: 8px;">
+              <div class="flow-box" style="display:inline-block;">Your Conversation</div>
+            </div>
+            <div class="connector-line"></div>
+            <div style="text-align:center; margin-bottom: 0;">
+              <div class="flow-box yellow" style="display:inline-block;">Agent</div>
+            </div>
+            <div class="connector-line"></div>
+            <div style="text-align:center; margin-bottom: 12px;">
+              <div class="flow-box" style="display:inline-block;">MCP Server</div>
+            </div>
+
+            <div class="flow-pair">
+              <div class="flow-pair-item">
+                <div class="server">context7</div>
+                <div class="source">library docs</div>
+              </div>
+              <div class="flow-pair-item">
+                <div class="server">github</div>
+                <div class="source">your issues</div>
+              </div>
+              <div class="flow-pair-item">
+                <div class="server">postgres</div>
+                <div class="source">your database</div>
+              </div>
+              <div class="flow-pair-item">
+                <div class="server">filesystem</div>
+                <div class="source">local files</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>26</span>
+    </div>
+  </div>
+</body>
+</html>

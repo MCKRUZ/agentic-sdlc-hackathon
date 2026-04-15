@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Today's Agenda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px;
+      left: 100px;
+      right: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 40px;
+      left: 100px;
+      right: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.5px;
+    }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 120px;
+      left: 100px;
+      right: 100px;
+      bottom: 90px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .row.lab {
+      border-color: rgba(255,230,0,0.3);
+      background: rgba(255,230,0,0.03);
+    }
+
+    .row.break {
+      border-color: rgba(255,255,255,0.04);
+      background: transparent;
+      opacity: 0.6;
+    }
+
+    .time {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      width: 56px;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .block-title {
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      flex: 1;
+    }
+
+    .row.lab .block-title {
+      color: #FFE600;
+      font-weight: 600;
+    }
+
+    .duration {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+
+    .pill {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    .pill.lab {
+      background: rgba(255,230,0,0.15);
+      color: #FFE600;
+      border: 1px solid rgba(255,230,0,0.3);
+    }
+
+    .pill.module {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Today's Schedule</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Full Day Schedule</div>
+    <h1>A Full Day of <span class="hl">Agentic Development</span></h1>
+
+    <div class="schedule-grid">
+      <div class="row">
+        <div class="time">09:00</div>
+        <div class="block-title">Welcome &amp; Logistics</div>
+        <div class="duration">15 min</div>
+      </div>
+      <div class="row">
+        <div class="time">13:00</div>
+        <div class="block-title">M04: Skills &amp; Custom Commands + Demo</div>
+        <div class="pill module">M04</div>
+        <div class="duration">40 min</div>
+      </div>
+
+      <div class="row">
+        <div class="time">09:15</div>
+        <div class="block-title">M01: The Agentic Mental Shift</div>
+        <div class="pill module">M01</div>
+        <div class="duration">30 min</div>
+      </div>
+      <div class="row lab">
+        <div class="time">13:40</div>
+        <div class="block-title">LAB 03: Build a Skill</div>
+        <div class="pill lab">Lab</div>
+        <div class="duration">35 min</div>
+      </div>
+
+      <div class="row">
+        <div class="time">09:45</div>
+        <div class="block-title">M02: Out-of-the-Box Usage + Demo</div>
+        <div class="pill module">M02</div>
+        <div class="duration">30 min</div>
+      </div>
+      <div class="row break">
+        <div class="time">14:15</div>
+        <div class="block-title">Afternoon Break</div>
+        <div class="duration">15 min</div>
+      </div>
+
+      <div class="row lab">
+        <div class="time">10:15</div>
+        <div class="block-title">LAB 01: First Interaction</div>
+        <div class="pill lab">Lab</div>
+        <div class="duration">30 min</div>
+      </div>
+      <div class="row">
+        <div class="time">14:30</div>
+        <div class="block-title">M05: MCP Servers + Demo</div>
+        <div class="pill module">M05</div>
+        <div class="duration">30 min</div>
+      </div>
+
+      <div class="row break">
+        <div class="time">10:45</div>
+        <div class="block-title">Morning Break</div>
+        <div class="duration">15 min</div>
+      </div>
+      <div class="row lab">
+        <div class="time">15:00</div>
+        <div class="block-title">LAB 04: Add an MCP Server</div>
+        <div class="pill lab">Lab</div>
+        <div class="duration">30 min</div>
+      </div>
+
+      <div class="row">
+        <div class="time">11:00</div>
+        <div class="block-title">M03: Project Context Files + Demo</div>
+        <div class="pill module">M03</div>
+        <div class="duration">20 min</div>
+      </div>
+      <div class="row">
+        <div class="time">15:30</div>
+        <div class="block-title">M06: Token Management</div>
+        <div class="pill module">M06</div>
+        <div class="duration">15 min</div>
+      </div>
+
+      <div class="row lab">
+        <div class="time">11:20</div>
+        <div class="block-title">LAB 02: Write Your Context File</div>
+        <div class="pill lab">Lab</div>
+        <div class="duration">40 min</div>
+      </div>
+      <div class="row">
+        <div class="time">15:45</div>
+        <div class="block-title">M07: Agentic SDLC + Wrap-up</div>
+        <div class="pill module">M07</div>
+        <div class="duration">15 min</div>
+      </div>
+
+      <div class="row break">
+        <div class="time">12:00</div>
+        <div class="block-title">Lunch</div>
+        <div class="duration">60 min</div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">02</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practical Token Habits</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 80px 100px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .habit-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 30px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .habit-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .habit-num {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,230,0,0.1);
+      border: 1px solid rgba(255,230,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFE600;
+      flex-shrink: 0;
+    }
+    .habit-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+    .habit-command {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFE600;
+      background: rgba(255,230,0,0.08);
+      border: 1px solid rgba(255,230,0,0.2);
+      border-radius: 6px;
+      padding: 5px 12px;
+    }
+    .habit-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .habit-note {
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .compare-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+    .compare-bad {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: rgba(255,100,90,0.8);
+      background: rgba(255,65,54,0.07);
+      border: 1px solid rgba(255,65,54,0.15);
+      border-radius: 6px;
+      padding: 5px 12px;
+      text-decoration: line-through;
+    }
+    .compare-arrow {
+      color: rgba(255,255,255,0.3);
+      font-size: 14px;
+    }
+    .compare-good {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: rgba(45,183,87,0.9);
+      background: rgba(45,183,87,0.07);
+      border: 1px solid rgba(45,183,87,0.2);
+      border-radius: 6px;
+      padding: 5px 12px;
+    }
+
+    .bottom-callout {
+      background: rgba(255,65,54,0.05);
+      border: 1px solid rgba(255,65,54,0.15);
+      border-radius: 12px;
+      padding: 18px 28px;
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,150,140,0.85);
+      line-height: 1.5;
+    }
+    .bottom-callout strong { color: rgba(255,120,110,1); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 06 — Token Management</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+    <h1>Four Habits That Keep Conversations <span class="hl">Sharp</span></h1>
+
+    <div class="grid-2x2">
+
+      <!-- Habit 1 -->
+      <div class="habit-card">
+        <div class="habit-top">
+          <div class="habit-num">1</div>
+          <div class="habit-title">Compact When Done</div>
+        </div>
+        <div>
+          <span class="habit-command">/compact</span>
+        </div>
+        <div class="habit-body">
+          Summarizes the conversation and clears old context. Use it when a task is done but you're continuing in the same session.
+        </div>
+        <div class="habit-note">The agent retains the summary — not every message. Same result quality, much lower token burn.</div>
+      </div>
+
+      <!-- Habit 2 -->
+      <div class="habit-card">
+        <div class="habit-top">
+          <div class="habit-num">2</div>
+          <div class="habit-title">Start Fresh for New Tasks</div>
+        </div>
+        <div>
+          <span class="habit-command">/clear</span>
+          &nbsp;or open a new session
+        </div>
+        <div class="habit-body">
+          Dragging old context into new work costs tokens and degrades quality. A new conversation is free.
+        </div>
+        <div class="habit-note">The instinct to keep context alive is wrong. Each task deserves a clean slate.</div>
+      </div>
+
+      <!-- Habit 3 -->
+      <div class="habit-card">
+        <div class="habit-top">
+          <div class="habit-num">3</div>
+          <div class="habit-title">Read Specifically, Not Broadly</div>
+        </div>
+        <div class="compare-row">
+          <span class="compare-bad">Read the entire auth module</span>
+          <span class="compare-arrow">→</span>
+          <span class="compare-good">Read the validateUser function</span>
+        </div>
+        <div class="habit-body">
+          The agent reads exactly what you ask for. Be precise. One function is almost always enough context.
+        </div>
+        <div class="habit-note">Broad reads burn tokens on code that never influences the answer.</div>
+      </div>
+
+      <!-- Habit 4 -->
+      <div class="habit-card">
+        <div class="habit-top">
+          <div class="habit-num">4</div>
+          <div class="habit-title">Put Permanent Context in Files</div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="habit-command">CLAUDE.md</span>
+          <span class="habit-command">skill files</span>
+          <span class="habit-command">reference docs</span>
+        </div>
+        <div class="habit-body">
+          If you type the same thing into chat regularly, that text belongs in a file. Files load once — repeated chat context loads every turn.
+        </div>
+        <div class="habit-note">CLAUDE.md is loaded automatically. Zero token cost per message, permanent context.</div>
+      </div>
+
+    </div>
+
+    <div class="bottom-callout" style="margin-top: 20px;">
+      <strong>Symptom of context overload:</strong> the agent starts contradicting itself or forgetting earlier decisions. That's your signal to compact or start fresh.
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <span>31</span>
+    </div>
+  </div>
+</body>
+</html>

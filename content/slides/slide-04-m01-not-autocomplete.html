@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>This Is Not Autocomplete</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 36px;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      flex: 1;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card.accent {
+      border-color: rgba(255,230,0,0.3);
+      background: rgba(255,230,0,0.02);
+    }
+
+    .card-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+
+    .card.accent .card-label {
+      color: rgba(255,230,0,0.6);
+    }
+
+    .card-title {
+      font-size: 26px; font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card-body {
+      font-size: 19px; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .callout {
+      margin-top: 20px;
+      padding: 22px 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+    .arrow-icon {
+      font-size: 22px;
+      color: #FFE600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 01 — The Agentic Mental Shift</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Rethinking the tool</div>
+    <h1>This Is Not Autocomplete</h1>
+
+    <div class="columns">
+      <div class="card">
+        <div class="card-label">Copilot / Autocomplete</div>
+        <div class="card-title">What you've used before</div>
+        <div class="card-body">
+          Predicts the <span class="hl">next token</span>. Suggests completions inline.
+          Reacts to what you type in the moment.
+          <span class="hl">Stateless</span> — it forgets the previous line as soon as you move on.
+          Each suggestion is independent of the last.
+        </div>
+      </div>
+
+      <div class="card accent">
+        <div class="card-label">Agentic Tool</div>
+        <div class="card-title">What this is</div>
+        <div class="card-body">
+          Reads your <span class="hl">entire codebase</span>. Plans a
+          <span class="hl">sequence of steps</span>.
+          <span class="hl">Executes</span> — writes files, runs commands, asks questions.
+          Holds context across the whole task from start to finish.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      The shift is from &nbsp;<span class="hl">suggestion</span>&nbsp;
+      <span class="arrow-icon">&#8594;</span>&nbsp;
+      <span class="hl">action</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">04</div>
+  </footer>
+</body>
+</html>

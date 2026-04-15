@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M03 — Context Is Layered</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 36px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+
+    .layout { display: flex; gap: 60px; flex: 1; min-height: 0; align-items: stretch; }
+
+    /* Left: hierarchy tiers */
+    .tiers { flex: 0 0 820px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+
+    .tier {
+      border-radius: 14px; padding: 24px 32px; display: flex; align-items: flex-start; gap: 24px;
+      position: relative;
+    }
+    .tier-1 {
+      background: rgba(255,230,0,0.06); border: 1px solid rgba(255,230,0,0.35);
+      margin-left: 0px;
+    }
+    .tier-2 {
+      background: rgba(255,230,0,0.04); border: 1px solid rgba(255,230,0,0.2);
+      margin-left: 48px;
+    }
+    .tier-3 {
+      background: rgba(255,230,0,0.02); border: 1px solid rgba(255,230,0,0.1);
+      margin-left: 96px;
+    }
+
+    .tier-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      background: rgba(255,230,0,0.15); color: #FFE600;
+      border-radius: 6px; padding: 4px 10px;
+      min-width: 72px; text-align: center; margin-top: 2px;
+    }
+    .tier-body {}
+    .tier-scope {
+      font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;
+    }
+    .tier-path {
+      font-family: 'Courier New', monospace; font-size: 15px;
+      color: #FFE600; margin-bottom: 8px;
+    }
+    .tier-desc { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* Arrow connector */
+    .connector {
+      display: flex; align-items: center; justify-content: flex-start;
+      padding-left: 36px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); font-weight: 600; gap: 8px;
+    }
+    .connector-line {
+      width: 2px; height: 16px; background: rgba(255,255,255,0.1);
+      margin-left: 36px;
+    }
+
+    /* Right: info column */
+    .info-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+
+    .info-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 24px 28px;
+    }
+
+    .specificity-bar {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .bar-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .bar-row { display: flex; align-items: center; gap: 12px; }
+    .bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; background: #FFE600; border-radius: 3px; }
+    .bar-text { font-size: 13px; color: rgba(255,255,255,0.4); min-width: 70px; text-align: right; }
+
+    .bottom-note {
+      font-size: 16px; color: rgba(255,255,255,0.45); font-style: italic; line-height: 1.6;
+    }
+    .bottom-note strong { color: rgba(255,255,255,0.75); font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 03 — Project Context Files</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>Context Is <span class="hl">Layered</span></h1>
+
+    <div class="layout">
+      <!-- Left: Tier diagram -->
+      <div class="tiers">
+        <!-- Tier 1 -->
+        <div class="tier tier-1">
+          <div class="tier-num">Tier 1</div>
+          <div class="tier-body">
+            <div class="tier-scope">Global</div>
+            <div class="tier-path">~/.claude/<span class="hl">CLAUDE.md</span></div>
+            <div class="tier-desc">Applies to <strong>all your projects</strong><br>Example: personal coding preferences, preferred tools</div>
+          </div>
+        </div>
+
+        <div class="connector-line"></div>
+
+        <!-- Tier 2 -->
+        <div class="tier tier-2">
+          <div class="tier-num">Tier 2</div>
+          <div class="tier-body">
+            <div class="tier-scope">Project</div>
+            <div class="tier-path">[project-root]/<span class="hl">CLAUDE.md</span></div>
+            <div class="tier-desc">Applies to <strong>this repo</strong> &mdash; committed to git<br>Example: stack, conventions, what not to do</div>
+          </div>
+        </div>
+
+        <div class="connector-line" style="margin-left: 84px;"></div>
+
+        <!-- Tier 3 -->
+        <div class="tier tier-3">
+          <div class="tier-num">Tier 3</div>
+          <div class="tier-body">
+            <div class="tier-scope">Folder</div>
+            <div class="tier-path">[subfolder]/<span class="hl">CLAUDE.md</span></div>
+            <div class="tier-desc">Applies only to <strong>that directory</strong><br>Example: "this folder is auto-generated, don't edit"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: info -->
+      <div class="info-col">
+        <div class="info-card">
+          <div class="bar-label" style="margin-bottom: 20px;">Specificity — lower overrides broader</div>
+          <div class="specificity-bar">
+            <div class="bar-row">
+              <span style="font-size:14px; color:rgba(255,255,255,0.5); min-width:70px;">Global</span>
+              <div class="bar-track"><div class="bar-fill" style="width:100%; opacity:0.3;"></div></div>
+              <span class="bar-text">Broad</span>
+            </div>
+            <div class="bar-row">
+              <span style="font-size:14px; color:rgba(255,255,255,0.5); min-width:70px;">Project</span>
+              <div class="bar-track"><div class="bar-fill" style="width:66%; opacity:0.6;"></div></div>
+              <span class="bar-text">Medium</span>
+            </div>
+            <div class="bar-row">
+              <span style="font-size:14px; color:rgba(255,255,255,0.5); min-width:70px;">Folder</span>
+              <div class="bar-track"><div class="bar-fill" style="width:33%; opacity:1;"></div></div>
+              <span class="bar-text">Narrow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card" style="border-color: rgba(45,183,87,0.25); background: rgba(45,183,87,0.04);">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #2DB757; margin-bottom: 10px;">Team Benefit</div>
+          <div style="font-size: 17px; color: rgba(255,255,255,0.8); line-height: 1.6;">
+            Committed to git: <strong>everyone who clones the repo</strong> gets the same agent behavior automatically.
+          </div>
+        </div>
+
+        <div style="font-size: 16px; color: rgba(255,255,255,0.4); font-style: italic; line-height: 1.7;">
+          All three layers are read and merged. More specific context wins when there's a conflict.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>17</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Agent Loop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 6px;
+    }
+
+    .subheadline {
+      font-size: 20px; font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+    }
+
+    .loop-row {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .step-card {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 13px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFE600;
+    }
+
+    .step-title {
+      font-size: 28px; font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .step-body {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .step-icon {
+      font-size: 36px;
+      margin-bottom: 4px;
+      opacity: 0.8;
+    }
+
+    .arrow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      flex-shrink: 0;
+      color: #FFE600;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    /* Step color accent on left border */
+    .step-card:nth-child(1) { border-left: 3px solid rgba(255,230,0,0.5); }
+    .step-card:nth-child(3) { border-left: 3px solid rgba(255,230,0,0.35); }
+    .step-card:nth-child(5) { border-left: 3px solid rgba(255,230,0,0.5); }
+    .step-card:nth-child(7) { border-left: 3px solid rgba(255,230,0,0.35); }
+
+    .callout {
+      padding: 20px 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 01 — The Agentic Mental Shift</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">How agents operate</div>
+    <h1>The Agent Loop</h1>
+    <div class="subheadline">Every agent action follows this cycle</div>
+
+    <div class="loop-row">
+      <div class="step-card">
+        <div class="step-number">Step 01</div>
+        <div class="step-title">Observe</div>
+        <div class="step-body">Read context: files, conversation history, your message. Build a picture of where things stand.</div>
+      </div>
+
+      <div class="arrow-connector">&#8594;</div>
+
+      <div class="step-card">
+        <div class="step-number">Step 02</div>
+        <div class="step-title">Plan</div>
+        <div class="step-body">Decide what steps to take. Break the task down. Sequence the actions before touching anything.</div>
+      </div>
+
+      <div class="arrow-connector">&#8594;</div>
+
+      <div class="step-card">
+        <div class="step-number">Step 03</div>
+        <div class="step-title">Act</div>
+        <div class="step-body">Execute: <span class="hl">write</span>, <span class="hl">run</span>, <span class="hl">read</span>, <span class="hl">ask</span>. Each action is visible before it lands.</div>
+      </div>
+
+      <div class="arrow-connector">&#8594;</div>
+
+      <div class="step-card">
+        <div class="step-number">Step 04</div>
+        <div class="step-title">Verify</div>
+        <div class="step-body">Check the result. Update understanding. If something didn't work, loop back and try a different approach.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      You are <span class="hl">in the loop</span>. Every action is visible and <span class="hl">reversible</span> before you accept it.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">05</div>
+  </footer>
+</body>
+</html>

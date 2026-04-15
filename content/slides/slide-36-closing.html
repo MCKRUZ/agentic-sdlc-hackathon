@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Closing — Agentic SDLC Hackathon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 900; }
+
+    /* Geometric background elements */
+    .bg-elements {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* Large circle, top-right */
+    .bg-circle-1 {
+      position: absolute;
+      top: -180px;
+      right: -180px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,230,0,0.04);
+      background: radial-gradient(circle at center, rgba(255,230,0,0.03) 0%, transparent 70%);
+    }
+    /* Medium circle, bottom-left */
+    .bg-circle-2 {
+      position: absolute;
+      bottom: -120px;
+      left: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,230,0,0.03);
+      background: radial-gradient(circle at center, rgba(255,230,0,0.02) 0%, transparent 70%);
+    }
+    /* Small circle, center-right */
+    .bg-circle-3 {
+      position: absolute;
+      top: 50%;
+      right: 120px;
+      transform: translateY(-50%);
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,230,0,0.05);
+    }
+
+    /* Diagonal bar, bottom-left to top-right */
+    .bg-bar-1 {
+      position: absolute;
+      bottom: -80px;
+      left: 40%;
+      width: 2px;
+      height: 800px;
+      background: linear-gradient(0deg, transparent, rgba(255,230,0,0.05), transparent);
+      transform: rotate(25deg);
+      transform-origin: bottom center;
+    }
+    .bg-bar-2 {
+      position: absolute;
+      bottom: -80px;
+      left: calc(40% + 28px);
+      width: 1px;
+      height: 800px;
+      background: linear-gradient(0deg, transparent, rgba(255,230,0,0.025), transparent);
+      transform: rotate(25deg);
+      transform-origin: bottom center;
+    }
+
+    /* Main content */
+    .content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+
+    .pre-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 32px;
+    }
+
+    .headline {
+      font-size: 96px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 48px;
+    }
+    .headline .line-1 { color: #FFFFFF; display: block; }
+    .headline .line-2 { color: #FFE600; display: block; }
+
+    .body-text {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 900px;
+      margin-bottom: 0;
+    }
+
+    /* Bottom section */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 160px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      z-index: 10;
+    }
+    .thank-you {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.5px;
+    }
+    .workshop-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+    .ey-logo {
+      height: 32px;
+      width: auto;
+      opacity: 0.6;
+    }
+
+    /* Accent horizontal rule */
+    .accent-rule {
+      width: 80px;
+      height: 4px;
+      background: #FFE600;
+      border-radius: 2px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background geometric elements -->
+  <div class="bg-elements">
+    <div class="bg-circle-1"></div>
+    <div class="bg-circle-2"></div>
+    <div class="bg-circle-3"></div>
+    <div class="bg-bar-1"></div>
+    <div class="bg-bar-2"></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="pre-label">Agentic SDLC Hackathon</div>
+    <div class="accent-rule"></div>
+    <h1 class="headline">
+      <span class="line-1">Build the habit.</span>
+      <span class="line-2">Not the tutorial.</span>
+    </h1>
+    <p class="body-text">
+      Every tool in this room will be obsolete in 18 months.<br>
+      The habit of working with agents will not.
+    </p>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <span class="thank-you">Thank you</span>
+    <span class="workshop-name">Agentic SDLC Hackathon</span>
+    <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    <span style="font-size:12px;color:rgba(255,255,255,0.25);font-weight:400;">36</span>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M04 — Skills vs Inline Prompts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 36px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+
+    .columns { display: flex; gap: 32px; flex: 1; min-height: 0; }
+
+    .col-card {
+      flex: 1; border-radius: 16px; padding: 36px 40px;
+      display: flex; flex-direction: column;
+    }
+    .col-inline {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .col-skill {
+      background: rgba(255,230,0,0.04); border: 1px solid rgba(255,230,0,0.25);
+    }
+
+    .col-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .col-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+    }
+    .badge-muted { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+    .badge-yellow { background: rgba(255,230,0,0.15); color: #FFE600; }
+
+    .col-title { font-size: 26px; font-weight: 700; }
+    .col-title.muted { color: rgba(255,255,255,0.75); }
+    .col-title.yellow { color: #FFE600; }
+
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .item-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 19px; line-height: 1.45; color: rgba(255,255,255,0.8);
+    }
+    .bullet-muted { color: rgba(255,255,255,0.3); font-size: 18px; margin-top: 2px; min-width: 16px; }
+    .bullet-yellow { color: #FFE600; font-size: 18px; margin-top: 2px; min-width: 16px; }
+
+    /* Divider */
+    .vs-divider {
+      flex: 0 0 60px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .vs-circle {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; letter-spacing: 1px;
+      color: rgba(255,255,255,0.4);
+    }
+    .vs-line { flex: 1; width: 1px; background: rgba(255,255,255,0.07); }
+
+    .callout {
+      margin-top: 24px;
+      background: rgba(255,230,0,0.06); border: 1px solid rgba(255,230,0,0.25);
+      border-radius: 12px; padding: 20px 32px;
+      font-size: 20px; line-height: 1.55; color: rgba(255,255,255,0.75);
+    }
+    .callout strong { color: #FFE600; font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 04 — Skills &amp; Custom Commands</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>When to Write a Skill vs. <span class="hl">Just Prompt</span></h1>
+
+    <div class="columns">
+      <!-- Left: Inline prompt -->
+      <div class="col-card col-inline">
+        <div class="col-header">
+          <span class="col-badge badge-muted">Inline Prompt</span>
+        </div>
+        <div class="col-title muted" style="margin-bottom: 24px;">Use when...</div>
+        <ul class="item-list">
+          <li>
+            <span class="bullet-muted">&#8211;</span>
+            <span>It's a one-off task</span>
+          </li>
+          <li>
+            <span class="bullet-muted">&#8211;</span>
+            <span>The context is highly specific to this moment</span>
+          </li>
+          <li>
+            <span class="bullet-muted">&#8211;</span>
+            <span>You're still figuring out what you want</span>
+          </li>
+          <li>
+            <span class="bullet-muted">&#8211;</span>
+            <span>You only need it once</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- VS divider -->
+      <div class="vs-divider">
+        <div class="vs-line"></div>
+        <div class="vs-circle">vs</div>
+        <div class="vs-line"></div>
+      </div>
+
+      <!-- Right: Write a skill -->
+      <div class="col-card col-skill">
+        <div class="col-header">
+          <span class="col-badge badge-yellow">Write a Skill</span>
+        </div>
+        <div class="col-title yellow" style="margin-bottom: 24px;">Use when...</div>
+        <ul class="item-list">
+          <li>
+            <span class="bullet-yellow">&#10003;</span>
+            <span>You've written this prompt <strong>more than once</strong></span>
+          </li>
+          <li>
+            <span class="bullet-yellow">&#10003;</span>
+            <span>Multiple teammates would benefit</span>
+          </li>
+          <li>
+            <span class="bullet-yellow">&#10003;</span>
+            <span>The task has a <strong>consistent structure</strong></span>
+          </li>
+          <li>
+            <span class="bullet-yellow">&#10003;</span>
+            <span>Output format must be exact every time</span>
+          </li>
+          <li>
+            <span class="bullet-yellow">&#10003;</span>
+            <span>You want it on a <strong>keyboard shortcut</strong></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      The test: <strong>Could someone else on your team use this?</strong> If yes, it's a skill.
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>24</span>
+    </div>
+  </div>
+</body>
+</html>

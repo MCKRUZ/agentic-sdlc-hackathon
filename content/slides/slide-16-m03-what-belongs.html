@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M03 — What Belongs In It?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F; color: #FFFFFF; overflow: hidden;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+    .content { height: 100%; padding: 72px 100px 48px; display: flex; flex-direction: column; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+    .slide-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ey-logo { height: 40px; width: auto; }
+    h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 36px; }
+    .footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 20px; }
+    .footer .ey-logo { height: 24px; }
+
+    .columns { display: flex; gap: 28px; flex: 1; min-height: 0; }
+
+    .col-card {
+      flex: 1; border-radius: 16px; padding: 36px; display: flex; flex-direction: column;
+    }
+    .col-card.green-card {
+      background: rgba(45,183,87,0.05); border: 1px solid rgba(45,183,87,0.35);
+    }
+    .col-card.red-card {
+      background: rgba(255,65,54,0.05); border: 1px solid rgba(255,65,54,0.35);
+    }
+
+    .col-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    }
+    .col-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+    }
+    .badge-green { background: rgba(45,183,87,0.2); color: #2DB757; }
+    .badge-red { background: rgba(255,65,54,0.2); color: #FF4136; }
+
+    .col-title { font-size: 22px; font-weight: 700; }
+    .col-title.green { color: #2DB757; }
+    .col-title.red { color: #FF4136; }
+
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .item-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 18px; line-height: 1.45; color: rgba(255,255,255,0.82);
+    }
+    .icon-green { color: #2DB757; font-size: 18px; margin-top: 1px; }
+    .icon-red { color: #FF4136; font-size: 18px; margin-top: 1px; }
+
+    .callout {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 20px 28px;
+      font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.65);
+      font-style: italic;
+    }
+    .callout strong { color: rgba(255,255,255,0.9); font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <span class="slide-label">Module 03 — Project Context Files</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+    </div>
+
+    <h1>Write It Like You're <span class="hl">Onboarding a Contractor</span></h1>
+
+    <div class="columns">
+      <!-- PUT THIS IN -->
+      <div class="col-card green-card">
+        <div class="col-header">
+          <span class="col-badge badge-green">Put This In</span>
+        </div>
+        <ul class="item-list">
+          <li><span class="icon-green">✓</span><span>Tech stack with <strong>versions</strong></span></li>
+          <li><span class="icon-green">✓</span><span>Naming and file organization conventions</span></li>
+          <li><span class="icon-green">✓</span><span>Error handling patterns</span></li>
+          <li><span class="icon-green">✓</span><span>Things the agent must <strong>NEVER do</strong></span></li>
+          <li><span class="icon-green">✓</span><span>Links to architectural decision records</span></li>
+          <li><span class="icon-green">✓</span><span>Current focus area</span></li>
+        </ul>
+      </div>
+
+      <!-- LEAVE THIS OUT -->
+      <div class="col-card red-card">
+        <div class="col-header">
+          <span class="col-badge badge-red">Leave This Out</span>
+        </div>
+        <ul class="item-list">
+          <li><span class="icon-red">✗</span><span>Secrets or API keys</span></li>
+          <li><span class="icon-red">✗</span><span>Long prose explanations</span></li>
+          <li><span class="icon-red">✗</span><span>Generic advice that applies to any project</span></li>
+          <li><span class="icon-red">✗</span><span>Instructions the agent already follows by default</span></li>
+          <li><span class="icon-red">✗</span><span>Your full README</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div class="callout">
+        <strong>The contractor analogy:</strong> technically skilled, knows nothing about YOUR project specifically. Write for that person.
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Agentic SDLC Hackathon</span>
+      <img src="ey-logo-dark.png" alt="EY" class="ey-logo" />
+      <span>16</span>
+    </div>
+  </div>
+</body>
+</html>

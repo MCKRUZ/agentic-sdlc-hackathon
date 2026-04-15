@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Always Review the Diff</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .content-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .diff-block {
+      background: #0A0A0C;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .diff-toolbar {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .diff-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .diff-toolbar-label {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      margin-left: 8px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .diff-content {
+      padding: 24px 28px;
+      font-family: 'Courier New', 'Consolas', monospace;
+      font-size: 18px;
+      line-height: 1.9;
+      flex: 1;
+    }
+
+    .diff-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 2px 0;
+      border-radius: 4px;
+    }
+
+    .diff-line.removed {
+      background: rgba(255,65,54,0.1);
+      color: rgba(255,120,115,0.9);
+    }
+
+    .diff-line.added {
+      background: rgba(45,183,87,0.1);
+      color: rgba(80,210,120,0.9);
+    }
+
+    .diff-line.context {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .diff-marker {
+      width: 16px;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      justify-content: center;
+    }
+
+    .callout-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 22px 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+    }
+
+    .callout-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,230,0,0.15);
+      border: 1px solid rgba(255,230,0,0.3);
+      color: #FFE600;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .callout-text {
+      font-size: 20px; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
+    .callout-item.danger {
+      border-color: rgba(255,65,54,0.2);
+      background: rgba(255,65,54,0.04);
+    }
+    .callout-item.danger .callout-num {
+      background: rgba(255,65,54,0.15);
+      border-color: rgba(255,65,54,0.3);
+      color: #FF4136;
+    }
+    .callout-item.danger .callout-text {
+      color: rgba(255,255,255,0.65);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 02 — Out-of-the-Box Usage</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Human in the loop</div>
+    <h1>Every Change Is a Diff You Must Review</h1>
+
+    <div class="content-area">
+      <div class="diff-block">
+        <div class="diff-toolbar">
+          <div class="diff-dot" style="background:#FF4136;"></div>
+          <div class="diff-dot" style="background:#FFE600;"></div>
+          <div class="diff-dot" style="background:#2DB757;"></div>
+          <div class="diff-toolbar-label">src/auth/validators.ts</div>
+        </div>
+        <div class="diff-content">
+          <div class="diff-line removed">
+            <span class="diff-marker">-</span>
+            <span>function validateUser(token) {</span>
+          </div>
+          <div class="diff-line removed">
+            <span class="diff-marker">-</span>
+            <span>&nbsp;&nbsp;return token.userId !== undefined;</span>
+          </div>
+          <div class="diff-line added">
+            <span class="diff-marker">+</span>
+            <span>function validateUser(token) {</span>
+          </div>
+          <div class="diff-line added">
+            <span class="diff-marker">+</span>
+            <span>&nbsp;&nbsp;return token.sub !== undefined</span>
+          </div>
+          <div class="diff-line added">
+            <span class="diff-marker">+</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| token.userId !== undefined;</span>
+          </div>
+          <div class="diff-line context">
+            <span class="diff-marker">&nbsp;</span>
+            <span>}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="callout-item">
+          <div class="callout-num">1</div>
+          <div class="callout-text">The agent shows you <span class="hl">what it intends</span> before executing</div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-num">2</div>
+          <div class="callout-text">You can <span class="hl">reject, modify, or accept</span> — you are always in control</div>
+        </div>
+        <div class="callout-item danger">
+          <div class="callout-num">3</div>
+          <div class="callout-text">Accepting without reading is the only way to get burned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">11</div>
+  </footer>
+</body>
+</html>

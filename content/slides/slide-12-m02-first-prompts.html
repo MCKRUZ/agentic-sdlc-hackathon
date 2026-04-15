@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Prompt Types That Always Work</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px; height: 1080px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0D0D0F;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .hl { color: #FFE600; font-weight: 600; }
+
+    header {
+      position: absolute;
+      top: 48px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .slide-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    footer {
+      position: absolute;
+      bottom: 40px; left: 100px; right: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
+    .footer-logo img { height: 24px; width: auto; }
+
+    .main {
+      position: absolute;
+      top: 110px; left: 100px; right: 100px; bottom: 90px;
+      display: flex; flex-direction: column;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .prompt-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .prompt-card.accent {
+      border-color: rgba(255,230,0,0.25);
+      background: rgba(255,230,0,0.02);
+    }
+
+    .card-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(255,230,0,0.12);
+      border: 1px solid rgba(255,230,0,0.3);
+      color: #FFE600;
+      font-size: 17px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .card-type {
+      font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: rgba(255,230,0,0.6);
+    }
+
+    .card-pattern {
+      font-size: 26px; font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .card-example {
+      font-family: 'Courier New', 'Consolas', monospace;
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid rgba(255,230,0,0.4);
+      border-radius: 8px;
+      padding: 14px 18px;
+      line-height: 1.55;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .card-why-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+
+    .card-why-text {
+      font-size: 17px; font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .callout {
+      padding: 20px 36px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 19px; font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .arrow {
+      color: #FFE600;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="slide-label">Module 02 — Out-of-the-Box Usage</div>
+    <img src="ey-logo-dark.png" alt="EY" style="height:40px;width:auto;" />
+  </header>
+
+  <div class="main">
+    <div class="section-label">Prompt strategy</div>
+    <h1>Three Prompt Types That <span class="hl">Always Work</span></h1>
+
+    <div class="cards-row">
+      <div class="prompt-card accent">
+        <div class="card-num">1</div>
+        <div class="card-type">Navigation</div>
+        <div class="card-pattern">"Where is X?"</div>
+        <div class="card-example">"What are the main entry points for this application?"</div>
+        <div class="card-why-label">Why it works</div>
+        <div class="card-why-text">Grounds the agent in your actual file structure before it does anything.</div>
+      </div>
+
+      <div class="prompt-card accent">
+        <div class="card-num">2</div>
+        <div class="card-type">Explanation</div>
+        <div class="card-pattern">"What does X do?"</div>
+        <div class="card-example">"Pick the most complex function in this project and explain what it does."</div>
+        <div class="card-why-label">Why it works</div>
+        <div class="card-why-text">Tests the agent's comprehension before trusting its edits.</div>
+      </div>
+
+      <div class="prompt-card accent">
+        <div class="card-num">3</div>
+        <div class="card-type">Targeted Change</div>
+        <div class="card-pattern">"Change X to Y"</div>
+        <div class="card-example">"Add a JSDoc comment block to the createOrder() function explaining its parameters."</div>
+        <div class="card-why-label">Why it works</div>
+        <div class="card-why-text">Small, reviewable, low-risk — the right kind of first change.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      Start with <span class="hl">navigation</span>.
+      <span class="arrow">&nbsp;&#8594;&nbsp;</span>
+      Then <span class="hl">explanation</span>.
+      <span class="arrow">&nbsp;&#8594;&nbsp;</span>
+      Then <span class="hl">change</span>.
+      &nbsp;&nbsp;Build trust incrementally.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Agentic SDLC Hackathon</div>
+    <div class="footer-logo"><img src="ey-logo-dark.png" alt="EY" /></div>
+    <div class="footer-text">12</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,317 @@
+name: Agentic SDLC Hackathon
+subtitle: A Hands-On Introduction to Agentic Software Development
+version: "1.0"
+author: Matt Kruczek
+audience: Developers (any stack, beginner to agentic AI tools)
+max_participants: 100
+format: instructor-led + self-paced labs
+duration_hours: 7
+start_time: "09:00"
+end_time: "16:00"
+
+objectives:
+  - id: O1
+    statement: Explain what agentic development is and how it differs from copilot/autocomplete tools
+    bloom_level: understand
+  - id: O2
+    statement: Use an AI coding agent out-of-the-box to explore, explain, and modify a real codebase
+    bloom_level: apply
+  - id: O3
+    statement: Create a project context file (e.g., CLAUDE.md) that meaningfully improves agent output
+    bloom_level: create
+  - id: O4
+    statement: Build a reusable custom skill or slash command that automates a common workflow
+    bloom_level: create
+  - id: O5
+    statement: Configure and use at least one MCP server to extend agent capabilities
+    bloom_level: apply
+  - id: O6
+    statement: Describe token management strategies and apply them to avoid context window issues
+    bloom_level: apply
+  - id: O7
+    statement: Map the agentic SDLC to their own development workflow
+    bloom_level: analyze
+
+schedule:
+  - time: "09:00"
+    duration_min: 15
+    type: welcome
+    title: Welcome & Logistics
+    facilitator_notes: Intro, WiFi, housekeeping, tool install check
+
+  - time: "09:15"
+    duration_min: 30
+    type: presentation
+    module: m01
+    title: The Agentic Mental Shift
+    objectives: [O1]
+
+  - time: "09:45"
+    duration_min: 30
+    type: presentation+demo
+    module: m02
+    title: OOB Tool Usage
+    objectives: [O2]
+    demo: demo-01-first-interaction
+
+  - time: "10:15"
+    duration_min: 30
+    type: lab
+    lab: lab-01
+    title: "LAB 01: Your First Agent Interaction"
+    objectives: [O2]
+
+  - time: "10:45"
+    duration_min: 15
+    type: break
+    title: Morning Break
+
+  - time: "11:00"
+    duration_min: 20
+    type: presentation+demo
+    module: m03
+    title: Project Context Files
+    objectives: [O3]
+    demo: demo-02-context-file
+
+  - time: "11:20"
+    duration_min: 40
+    type: lab
+    lab: lab-02
+    title: "LAB 02: Write Your Context File"
+    objectives: [O3]
+
+  - time: "12:00"
+    duration_min: 60
+    type: lunch
+    title: Lunch
+
+  - time: "13:00"
+    duration_min: 40
+    type: presentation+demo
+    module: m04
+    title: Skills & Custom Commands
+    objectives: [O4]
+    demo: demo-03-skills
+
+  - time: "13:40"
+    duration_min: 35
+    type: lab
+    lab: lab-03
+    title: "LAB 03: Build a Skill"
+    objectives: [O4]
+
+  - time: "14:15"
+    duration_min: 15
+    type: break
+    title: Afternoon Break
+
+  - time: "14:30"
+    duration_min: 30
+    type: presentation+demo
+    module: m05
+    title: MCP Servers
+    objectives: [O5]
+    demo: demo-04-mcp
+
+  - time: "15:00"
+    duration_min: 30
+    type: lab
+    lab: lab-04
+    title: "LAB 04: Add an MCP Server"
+    objectives: [O5]
+
+  - time: "15:30"
+    duration_min: 15
+    type: presentation
+    module: m06
+    title: Token Management & Context
+    objectives: [O6]
+
+  - time: "15:45"
+    duration_min: 15
+    type: presentation+wrapup
+    module: m07
+    title: Agentic SDLC & Wrap-up
+    objectives: [O7]
+
+modules:
+  - id: m01
+    title: The Agentic Mental Shift
+    duration_min: 30
+    type: presentation
+    files:
+      script: content/modules/m01-agentic-mental-shift/m01-script.md
+      slides: content/modules/m01-agentic-mental-shift/m01-slides.md
+    key_concepts:
+      - Agent vs. copilot: what's actually different
+      - The agent loop (observe, plan, act, verify)
+      - Tool permissions model
+      - Why prompting an agent differs from prompting a chatbot
+
+  - id: m02
+    title: OOB Tool Usage
+    duration_min: 30
+    type: presentation+demo
+    files:
+      script: content/modules/m02-oob-tool-usage/m02-script.md
+      slides: content/modules/m02-oob-tool-usage/m02-slides.md
+    key_concepts:
+      - Installing and launching your agent
+      - Exploring a codebase with natural language
+      - Understanding what the agent sees
+      - Green/yellow/red permission model
+      - Writing effective first prompts
+
+  - id: m03
+    title: Project Context Files
+    duration_min: 20
+    type: presentation+demo
+    files:
+      script: content/modules/m03-project-context/m03-script.md
+      slides: content/modules/m03-project-context/m03-slides.md
+    key_concepts:
+      - What CLAUDE.md / .cursorrules / system prompts are
+      - What to put in them (persona, conventions, constraints, workflow)
+      - Scoped context (global vs project vs folder)
+      - How the agent uses context at runtime
+
+  - id: m04
+    title: Skills & Custom Commands
+    duration_min: 40
+    type: presentation+demo
+    files:
+      script: content/modules/m04-skills-and-commands/m04-script.md
+      slides: content/modules/m04-skills-and-commands/m04-slides.md
+    key_concepts:
+      - What skills/slash commands are
+      - When to build one vs. inline prompt
+      - Anatomy of a skill file
+      - Real examples (commit, review-pr, test-this)
+      - Tool-specific: Claude skills vs Cursor rules vs Factory workflows
+
+  - id: m05
+    title: MCP Servers
+    duration_min: 30
+    type: presentation+demo
+    files:
+      script: content/modules/m05-mcp-servers/m05-script.md
+      slides: content/modules/m05-mcp-servers/m05-slides.md
+    key_concepts:
+      - What MCP is and why it matters
+      - The MCP ecosystem (tools, resources, prompts)
+      - Installing and configuring MCP servers
+      - Key servers to know (context7, filesystem, database, Slack)
+      - Building a simple MCP server
+
+  - id: m06
+    title: Token Management & Context
+    duration_min: 15
+    type: presentation
+    files:
+      script: content/modules/m06-token-management/m06-script.md
+      slides: content/modules/m06-token-management/m06-slides.md
+    key_concepts:
+      - What tokens are and how they cost money
+      - The context window and its limits
+      - Compaction strategies
+      - When to start a fresh conversation
+      - Prompt caching
+
+  - id: m07
+    title: Agentic SDLC & Wrap-up
+    duration_min: 15
+    type: presentation+wrapup
+    files:
+      script: content/modules/m07-agentic-sdlc/m07-script.md
+      slides: content/modules/m07-agentic-sdlc/m07-slides.md
+    key_concepts:
+      - Applying agents across the SDLC (plan, code, test, review, ship)
+      - Multi-agent patterns
+      - Building your team's workflow
+      - Next steps and resources
+
+labs:
+  - id: lab-01
+    title: Your First Agent Interaction
+    duration_min: 30
+    module: m02
+    objectives: [O2]
+    files:
+      instructions: content/labs/lab-01-first-interaction/lab-01-instructions.md
+      tracks:
+        claude-code: tracks/claude-code/lab-01-claude-code.md
+    tasks:
+      - Install and launch your AI agent tool
+      - Point it at your own project (or the sample project)
+      - Complete 5 guided exploration prompts
+      - Observe what the agent does and does NOT do automatically
+
+  - id: lab-02
+    title: Write Your Context File
+    duration_min: 40
+    module: m03
+    objectives: [O3]
+    files:
+      instructions: content/labs/lab-02-project-context/lab-02-instructions.md
+      tracks:
+        claude-code: tracks/claude-code/lab-02-claude-code.md
+    tasks:
+      - Create CLAUDE.md (or equivalent) for your project
+      - Define tech stack, coding conventions, what NOT to do
+      - Test the context file against 3 prompts
+      - Compare output before and after
+
+  - id: lab-03
+    title: Build a Skill
+    duration_min: 35
+    module: m04
+    objectives: [O4]
+    files:
+      instructions: content/labs/lab-03-build-a-skill/lab-03-instructions.md
+      tracks:
+        claude-code: tracks/claude-code/lab-03-claude-code.md
+    tasks:
+      - Choose a repetitive workflow (commit message, PR description, code review, test generation)
+      - Write a skill/slash command file that automates it
+      - Test it on your project
+      - Share one example with the group
+
+  - id: lab-04
+    title: Add an MCP Server
+    duration_min: 30
+    module: m05
+    objectives: [O5]
+    files:
+      instructions: content/labs/lab-04-mcp-servers/lab-04-instructions.md
+      tracks:
+        claude-code: tracks/claude-code/lab-04-claude-code.md
+    tasks:
+      - Install an MCP server (context7 recommended, or choose from list)
+      - Configure it for your agent
+      - Run 3 prompts that use the MCP server
+      - Observe what's now possible that wasn't before
+
+tracks:
+  - id: claude-code
+    tool: Claude Code
+    tool_url: https://claude.ai/code
+    status: complete
+    setup_file: tracks/claude-code/setup.md
+
+  - id: cursor
+    tool: Cursor
+    status: planned
+    setup_file: tracks/cursor/setup.md
+
+  - id: factory-ai
+    tool: Factory.ai
+    status: planned
+    setup_file: tracks/factory-ai/setup.md
+
+sample_project:
+  name: DevBoard
+  description: A minimal task-tracking REST API + static frontend. Used by the instructor for live demos.
+  stack: .NET 9 Minimal API + EF Core (in-memory) + vanilla HTML/JS
+  path: sample-project/
+  purpose: demo-only (participants use their own projects for labs)

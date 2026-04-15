@@ -1,0 +1,14 @@
+build/
+*.pyc
+__pycache__/
+.env
+*.local
+node_modules/
+*.user
+.vs/
+bin/
+obj/
+*.pdf
+*.pptx
+*.mp4
+*.wav

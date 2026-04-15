@@ -1,5 +1,5 @@
-# M04: Skills & Custom Commands
-## Presenter Script — 40 minutes including demo
+# M04: Skills, Subagents & Hooks
+## Presenter Script — 50 minutes including demo
 
 ---
 
@@ -203,7 +203,119 @@ The pattern you'll notice: each of these is a task you do repeatedly, has a cons
 
 ---
 
-### Section 6: Tool Differences (5 min)
+### Section 6: Subagents — Delegating to Keep Context Clean (10 min)
+
+[SLIDE 8]
+
+Skills are powerful, but they all run in your main conversation context. When you're deep in a long session — debugging for an hour, building a feature across ten files — your context window is filling up. Now imagine you need the agent to go research a completely different part of the codebase, investigate test coverage, or analyze a dependency you haven't looked at yet.
+
+If it does that work in your main session, that exploration consumes context you'll need for everything else. And when the context fills, quality drops.
+
+Subagents solve this. A subagent is a separate agent instance — its own context window, its own task — that you spawn to handle a focused piece of work. It does its job, summarizes the result, and terminates. Your main context sees only the summary, not all the steps that got there.
+
+Think of it like delegating to a colleague: you don't sit next to them while they do the research. You ask the question, they go figure it out, they come back with an answer.
+
+[SLIDE 9]
+
+In Claude Code, you spawn a subagent by telling the agent to use one for a specific task:
+
+```
+Use a subagent to analyze the authentication module and report back:
+where are session tokens stored, in what format, and who accesses them?
+```
+
+Claude Code handles the orchestration — spawning the subagent, running it, and returning the summary. You just get the result.
+
+[DEMO CUE] Run: "Use a subagent to explore the tests directory and report back: what coverage exists and what are the biggest gaps? Summarize the findings when done."
+
+Point out that the subagent runs in its own context and returns a focused summary — your main conversation doesn't accumulate all the exploration work.
+
+**Use a subagent when:**
+- You need investigation that doesn't belong in your main thread
+- You want parallel work: two subagents tackling independent tasks simultaneously
+- The task is well-defined and the output is a report, not ongoing collaboration
+- You're approaching your context limit and need to offload an investigation
+
+**Keep it inline when:**
+- You need to iterate on the output in the same conversation
+- The task is short enough that the overhead isn't worth it
+- The subagent would need context that only exists in your current session
+
+[PAUSE — 2 seconds]
+
+Subagents and skills are complementary. A skill is a reusable prompt template you invoke for a known task. A subagent is an isolated worker you spawn for investigation or parallel execution. You'll often use both in the same session.
+
+---
+
+### Section 7: Hooks — Deterministic Control (7 min)
+
+[SLIDE 10]
+
+Everything we've covered so far — skills, subagents, context files — influences the agent through prompts. The agent reads your instructions and tries to follow them. "Tries" is the key word: a prompt-based instruction is a strong suggestion, not a guarantee.
+
+Hooks are different. They're shell commands that run automatically at specific points in Claude Code's lifecycle, and they execute regardless of what the agent decides to do. They're your code, outside the model, firing at predictable trigger points.
+
+[SLIDE 11]
+
+Claude Code supports four hook trigger points:
+
+**PreToolUse** — runs before the agent calls a tool. You can inspect the action and block it by returning a non-zero exit code. Use this to prevent dangerous commands before they execute.
+
+**PostToolUse** — runs after a tool completes. Use this to auto-run a formatter after every file write, or log exactly what changed.
+
+**Notification** — fires when Claude Code has a notification for you. Useful for sending a Slack message or playing a sound when a long task finishes.
+
+**Stop** — fires when Claude Code finishes a task and is waiting for your next input.
+
+[DEMO CUE] Show a PostToolUse hook in settings.json:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "prettier --write \"$CLAUDE_TOOL_OUTPUT_FILE\""
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Say: "Every time Claude Code writes a file, prettier runs automatically. Not because the model decided to format — because you said 'after every write, always run this.' That is deterministic control."
+
+Show a second example — a PreToolUse hook that blocks `rm -rf`:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'rm -rf' && echo 'BLOCKED: rm -rf is not allowed' && exit 2 || exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+[PAUSE]
+
+We're not building hooks in the lab today — the hands-on time goes to skills and subagents. But when you hit a situation where a prompt-based instruction keeps getting ignored, hooks are the answer. The full hooks reference is in the Claude Code 101 course on Anthropic's SkillJar platform.
+
+---
+
+### Section 8: Tool Differences (5 min)
 
 [SLIDE 9]
 
@@ -231,4 +343,4 @@ Before we move to the next module, take two minutes and think about the one prom
 
 ---
 
-*End of M04 script. Total estimated time: 40 minutes.*
+*End of M04 script. Total estimated time: 50 minutes.*

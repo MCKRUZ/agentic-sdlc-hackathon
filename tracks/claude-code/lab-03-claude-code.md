@@ -207,3 +207,36 @@ Your custom skills appear in the command list. If they do not appear, check:
 1. The file is in `.claude/commands/` (not `.claude/skills/` or any other path)
 2. The file extension is `.md`
 3. The filename has no spaces (use hyphens: `code-review.md` not `code review.md`)
+
+---
+
+## Stretch Goal: Try a Subagent
+
+Once your skill is working, try delegating a research task to a subagent. Subagents run in their own context window and return a summary — they're useful when you want to investigate something without consuming your main session's context.
+
+**How to spawn a subagent in Claude Code:**
+
+At the Claude Code prompt, ask the agent to use a subagent for a focused task:
+
+```
+Use a subagent to explore the tests directory in this project and report back:
+- What test files exist?
+- What is being tested?
+- What are the biggest coverage gaps you can identify?
+
+Summarize the findings when done.
+```
+
+Claude Code will spawn the subagent, run the investigation in isolation, and return a summary to your main session.
+
+**What to observe:**
+- Your main conversation only receives the summary, not the full exploration transcript
+- The subagent's work does not consume your main context window
+- The quality of the summary depends on how clearly you scoped the task
+
+**When subagents are useful:**
+- Investigating a part of the codebase unrelated to your current task
+- Running two independent investigations in parallel ("use a subagent for X, and separately use a subagent for Y")
+- Any well-defined research task where you want the answer without the exploration overhead
+
+**Global vs. project subagents:** Like skills, you can define reusable subagent configurations for common delegation patterns. These are covered in the Claude Code 101 course on Anthropic's SkillJar platform.

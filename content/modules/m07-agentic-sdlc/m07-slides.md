@@ -8,7 +8,7 @@
 |---|---|---|
 | Plan | M01 | Agent as thinking partner: requirements, task breakdown, risk |
 | Build | M02, M03 | Code generation, refactoring, debugging, test generation |
-| Automate | M04 | Skills and commands: reusable, team-shared prompt tools |
+| Automate | M04 | Skills, subagents, and hooks: reusable tools and deterministic control |
 | Extend | M05 | MCP servers: connect agent to live systems and current docs |
 | Manage | M06 | Context and tokens: work within the limits of the tool |
 
@@ -76,6 +76,12 @@ Speaker note: Say "one thing" with emphasis. People leave workshops with lists o
 
 ## Slide 5: Resources
 
+**Go deeper on what we covered today:**
+- **Anthropic SkillJar** (anthropic.skilljar.com) — free courses:
+  - *Claude Code 101* — hooks, subagents, Plan Mode in full depth
+  - *Claude Code in Action* — GitHub integration, automated workflows, visual inputs
+
+**Reference:**
 - Anthropic Claude Code docs — skills, MCP config, agent settings
 - MCP server registry — full list of available servers
 - Claude Discord — developer channel, shared skills and workflows
@@ -85,7 +91,7 @@ The most common mistake after a day like this: over-engineering before you've do
 
 Start small. Use the tools for real work. Let the patterns emerge.
 
-Speaker note: Close on the "start small" line. It's the most actionable thing you can say at the end of a day like this. Don't add more after it — let it land.
+Speaker note: Call out SkillJar specifically — "If you want to go deeper on hooks or GitHub integration, those are the two courses to start with, and they're free." Close on the "start small" line. Don't add more after it.
 
 ---
 

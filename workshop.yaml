@@ -87,26 +87,26 @@ schedule:
     title: Lunch
 
   - time: "13:00"
-    duration_min: 40
+    duration_min: 50
     type: presentation+demo
     module: m04
-    title: Skills & Custom Commands
+    title: Skills, Subagents & Hooks
     objectives: [O4]
     demo: demo-03-skills
 
-  - time: "13:40"
-    duration_min: 35
+  - time: "13:50"
+    duration_min: 30
     type: lab
     lab: lab-03
     title: "LAB 03: Build a Skill"
     objectives: [O4]
 
-  - time: "14:15"
+  - time: "14:20"
     duration_min: 15
     type: break
     title: Afternoon Break
 
-  - time: "14:30"
+  - time: "14:35"
     duration_min: 30
     type: presentation+demo
     module: m05
@@ -114,8 +114,8 @@ schedule:
     objectives: [O5]
     demo: demo-04-mcp
 
-  - time: "15:00"
-    duration_min: 30
+  - time: "15:05"
+    duration_min: 25
     type: lab
     lab: lab-04
     title: "LAB 04: Add an MCP Server"
@@ -158,8 +158,10 @@ modules:
       slides: content/modules/m02-oob-tool-usage/m02-slides.md
     key_concepts:
       - Installing and launching your agent
+      - The Explore → Plan → Code → Commit workflow
       - Exploring a codebase with natural language
       - Understanding what the agent sees
+      - Plan Mode for larger multi-file changes
       - Green/yellow/red permission model
       - Writing effective first prompts
 
@@ -177,8 +179,8 @@ modules:
       - How the agent uses context at runtime
 
   - id: m04
-    title: Skills & Custom Commands
-    duration_min: 40
+    title: Skills, Subagents & Hooks
+    duration_min: 50
     type: presentation+demo
     files:
       script: content/modules/m04-skills-and-commands/m04-script.md
@@ -188,6 +190,8 @@ modules:
       - When to build one vs. inline prompt
       - Anatomy of a skill file
       - Real examples (commit, review-pr, test-this)
+      - Subagents: delegating tasks to keep main context clean
+      - Hooks: deterministic lifecycle control (demo-only)
       - Tool-specific: Claude skills vs Cursor rules vs Factory workflows
 
   - id: m05
@@ -264,7 +268,7 @@ labs:
 
   - id: lab-03
     title: Build a Skill
-    duration_min: 35
+    duration_min: 30
     module: m04
     objectives: [O4]
     files:
@@ -276,10 +280,11 @@ labs:
       - Write a skill/slash command file that automates it
       - Test it on your project
       - Share one example with the group
+      - Stretch: delegate a research task to a subagent and compare with inline
 
   - id: lab-04
     title: Add an MCP Server
-    duration_min: 30
+    duration_min: 25
     module: m05
     objectives: [O5]
     files:

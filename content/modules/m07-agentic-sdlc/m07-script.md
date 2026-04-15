@@ -77,6 +77,8 @@ That's it. One skill, tomorrow morning. If it takes you more than thirty minutes
 
 If you want to go further, here's where to look.
 
+Anthropic's SkillJar platform (anthropic.skilljar.com) has two courses worth doing next week. **Claude Code 101** covers hooks, subagents, and Plan Mode in depth — the material we introduced today. **Claude Code in Action** goes deeper into GitHub integration, automated code review workflows, and visual inputs. Both are free.
+
 The Anthropic documentation for Claude Code covers skills, MCP configuration, and agent settings in detail. The MCP server registry has the full list of available servers. The Claude Discord has a developer channel where people share skills and workflows.
 
 For multi-agent patterns, look at the Claude Code documentation on subagents and the broader literature on agentic systems — there's good practical writing appearing now from teams who are doing this in production.

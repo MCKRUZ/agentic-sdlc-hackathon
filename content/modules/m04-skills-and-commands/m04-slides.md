@@ -1,4 +1,4 @@
-# M04: Skills & Custom Commands — Slide Outline
+# M04: Skills, Subagents & Hooks — Slide Outline
 
 ---
 
@@ -113,7 +113,68 @@ Speaker note: Ask the room which of these they'd use first. Gets people engaged 
 
 ---
 
-## Slide 8: Tool Differences — Same Concept, Different Syntax
+## Slide 8: Subagents — Delegating Without Bloating Your Context
+
+The problem: a long session fills your context window. Research and investigation make it worse.
+
+The solution: spawn a subagent — a separate Claude instance with its own context — to handle focused work.
+
+```
+Use a subagent to analyze the authentication module and report back:
+where are session tokens stored, in what format, and who accesses them?
+```
+
+- The subagent works in isolation, summarizes its findings, then terminates
+- Your main context sees only the result, not all the steps that got there
+- Think of it as delegating to a colleague: they go figure it out, you get the answer
+
+Speaker note: The analogy that lands best is "you don't sit next to them while they do the research." Emphasize that the main context only gets the summary — that's the whole point.
+
+---
+
+## Slide 9: When to Use a Subagent vs. Inline
+
+| Use a subagent | Keep it inline |
+|---|---|
+| Investigation you don't need in your main thread | You'll iterate on the output in conversation |
+| Well-defined task with a clear deliverable | Task is short — overhead not worth it |
+| Parallel work: two agents at once | The agent needs your current session context |
+| You're near your context limit | Exploratory or back-and-forth work |
+
+Subagents and skills are complementary — you'll often use both in the same session.
+
+Skills: reusable prompt templates for known tasks.
+Subagents: isolated workers for investigation or parallel execution.
+
+Speaker note: Quick slide. The table does the work. Emphasize that these are complementary, not competing.
+
+---
+
+## Slide 10: Hooks — Deterministic Control
+
+**The problem with prompts:** "always run prettier after editing" is a suggestion. The agent might miss it.
+
+**Hooks:** shell commands that run at specific lifecycle events — outside the model, guaranteed to execute.
+
+| Trigger | When It Fires | Example Use |
+|---|---|---|
+| PreToolUse | Before a tool runs | Block `rm -rf` before it executes |
+| PostToolUse | After a tool completes | Run formatter after every file write |
+| Notification | When Claude wants to notify you | Play a sound / send Slack DM |
+| Stop | When Claude finishes and waits | Log session summary |
+
+```json
+"PostToolUse": [{ "matcher": "Write", "hooks": [{ "type": "command",
+  "command": "prettier --write \"$CLAUDE_TOOL_OUTPUT_FILE\"" }] }]
+```
+
+Demo-only today. Full reference: Claude Code 101 on anthropic.skilljar.com.
+
+Speaker note: The hook example on this slide is real and runnable. Make sure to show it working — the "after every Write, prettier runs automatically" moment is the one that clicks for people.
+
+---
+
+## Slide 11: Tool Differences — Same Concept, Different Syntax
 
 | Tool | File Location | Trigger Model |
 |---|---|---|
@@ -128,7 +189,7 @@ Speaker note: Some people in the room use Cursor. Acknowledge that Cursor's mode
 
 ---
 
-## Slide 9: What Good Skills Have in Common
+## Slide 12: What Good Skills Have in Common
 
 - Specific output format ("return a numbered list with file:line references")
 - Explicit constraints ("under 72 characters", "no explanation — just the output")
@@ -139,7 +200,7 @@ Speaker note: This is the "quality bar" slide. It's brief but it sets the expect
 
 ---
 
-## Slide 10: Your First Skill — Right Now
+## Slide 13: Your First Skill — Right Now
 
 Think of the one prompt you type most often.
 
@@ -153,4 +214,4 @@ Speaker note: Give them 90 seconds of quiet to actually write something down. Do
 
 ---
 
-*10 slides total. Estimated deck time: 35 minutes with demo, 5 minutes buffer.*
+*13 slides total. Estimated deck time: 45 minutes with demo, 5 minutes buffer.*

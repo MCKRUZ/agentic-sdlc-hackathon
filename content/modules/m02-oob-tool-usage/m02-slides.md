@@ -141,15 +141,15 @@ Speaker note: Narrate what's happening in real time. Point out the tool output l
 
 ---
 
-## Slide 10: The Core Loop, Demonstrated
+## Slide 10: The Core Workflow
 
-Explore. Understand. Constrain. Act.
+**Explore → Plan → Code → Commit**
 
-- Explore: ask it what's there before asking it to change anything
-- Understand: verify its model matches reality
-- Constrain: scope your task explicitly
-- Act: let it run, review the diff, iterate
+- **Explore:** ask it what's there before asking it to change anything
+- **Plan:** decide what to change and how — for bigger changes, use `/plan` to get an explicit approval step before any file is touched
+- **Code:** make changes with tight scope
+- **Commit:** commit and move on; don't let sessions drag on past a natural stopping point
 
 **Hands-on exercises after lunch** start with exploration and build up to a full feature addition.
 
-Speaker note: Land on this as a repeatable pattern they can use outside the workshop. The four words are the takeaway from M02.
+Speaker note: This is the official E→P→C→C workflow from Anthropic's Claude Code curriculum. Land on it clearly — it's vocabulary participants will encounter in the docs and SkillJar courses. Mention Plan Mode briefly: "If you're about to make a change that touches more than two or three files, type /plan first. The agent shows you exactly what it intends to do, you approve it, then it executes."

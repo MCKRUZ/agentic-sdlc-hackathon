@@ -1,6 +1,6 @@
 # Lab 04: Add an MCP Server
 
-**Duration:** 30 minutes
+**Duration:** 25 minutes
 **Track:** All tools
 
 ## Objectives

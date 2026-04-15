@@ -45,11 +45,11 @@ Complete these before you arrive. If something is not working, flag it at regist
 | 11:00 | M03: Context Files + Demo | Instruction + Demo |
 | 11:20 | LAB 02: Writing Your Context File | Lab |
 | 12:00 | Lunch | -- |
-| 13:00 | M04: Skills and Custom Commands + Demo | Instruction + Demo |
-| 13:40 | LAB 03: Building a Skill | Lab |
-| 14:15 | Break | -- |
-| 14:30 | M05: MCP Servers + Demo | Instruction + Demo |
-| 15:00 | LAB 04: Adding an MCP Server | Lab |
+| 13:00 | M04: Skills, Subagents & Hooks + Demo | Instruction + Demo |
+| 13:50 | LAB 03: Building a Skill | Lab |
+| 14:20 | Break | -- |
+| 14:35 | M05: MCP Servers + Demo | Instruction + Demo |
+| 15:05 | LAB 04: Adding an MCP Server | Lab |
 | 15:30 | M06: Token Management | Instruction |
 | 15:45 | M07: Agentic SDLC + Wrap-up | Instruction |
 
@@ -131,17 +131,18 @@ Complete these before you arrive. If something is not working, flag it at regist
 
 ---
 
-### M04: Skills and Custom Commands
+### M04: Skills, Subagents & Hooks
 
-**Key concept:** A skill is a reusable, parameterized prompt stored as a file in your project that you can invoke by name to perform a repeatable task.
+**Key concept:** Skills, subagents, and hooks are the three customization layers. Skills automate repeated prompts. Subagents delegate isolated work. Hooks enforce deterministic behavior.
 
-- Skills live in a specific directory: `.claude/commands/` for Claude Code. They are markdown files with instructions.
-- When you invoke a skill (e.g. `/commit-message`), the tool reads the skill file and executes its instructions against your current project state.
-- Skills can reference your context file and combine it with task-specific instructions.
-- Good candidates for skills: generating commit messages, writing test stubs from a function signature, creating pull request descriptions, checking code against your conventions.
-- Skills are plain files. You can version-control them, share them with your team, and iterate on them like code.
+- **Skills** live in `.claude/commands/` for Claude Code. A markdown file with instructions becomes a `/command-name` you can invoke. Version-control them and share them with your team.
+- **Subagents** are separate agent instances with their own context windows. Spawn one to investigate or parallelize work without consuming your main session's context. Your main thread only sees the summary.
+- **Hooks** are shell commands that run at lifecycle events (PreToolUse, PostToolUse, Notification, Stop). They execute outside the model -- guaranteed, not prompt-dependent. Example: auto-run prettier after every file write.
+- Good skill candidates: commit messages, test stubs, PR descriptions, convention checks.
+- Good subagent candidates: codebase research, test coverage analysis, parallel investigations.
+- Hooks deep-dive: Claude Code 101 on Anthropic's SkillJar platform.
 
-> **Remember this:** If you find yourself writing the same long prompt more than twice, that is a skill waiting to be written.
+> **Remember this:** If you find yourself writing the same long prompt more than twice, that is a skill. If you need to investigate something without filling your context, that is a subagent. If a prompt-based instruction keeps getting ignored, that is a hook.
 
 **Personal notes:**
 
@@ -340,7 +341,7 @@ Write a CLAUDE.md (or equivalent) for my project and confirm it changes the agen
 
 ### LAB 03: Building a Skill
 
-**Duration:** 35 minutes
+**Duration:** 30 minutes
 **Tools needed:** Your project, agent tool running, text editor
 
 **What I'll do:**
@@ -397,7 +398,7 @@ Create at least one reusable skill file and invoke it.
 
 ### LAB 04: Adding an MCP Server
 
-**Duration:** 30 minutes
+**Duration:** 25 minutes
 **Tools needed:** Your project, agent tool running, terminal with internet access
 
 **What I'll do:**
@@ -588,6 +589,9 @@ claude mcp list
 
 **Claude Code**
 - Official documentation: docs.anthropic.com/claude-code
+- Anthropic SkillJar (free courses): anthropic.skilljar.com
+  - *Claude Code 101* — hooks, subagents, Plan Mode in depth
+  - *Claude Code in Action* — GitHub integration, automated workflows, visual inputs
 - MCP server registry: Browse available servers at the MCP documentation site
 
 **Cursor**

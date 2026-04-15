@@ -148,7 +148,9 @@ Show the confirmation step before it writes files. Show the resulting diff.
 
 [SLIDE]
 
-That's the core loop in practice. Explore, understand, constrain, act.
+That's the workflow in practice: **Explore → Plan → Code → Commit**. Start by exploring the codebase until you understand what's there. Plan what you'll do — for larger changes, use Plan Mode: type `/plan` in Claude Code to get an explicit step-by-step plan the agent will wait for you to approve before touching any file. Code the changes with tight scope. Then commit.
+
+The Explore and Plan steps are what most people skip, and that's exactly where the surprises come from. Spend the time upfront.
 
 In the hands-on section after lunch, you'll do this yourself with DevBoard. The exercises will walk you through progressively more complex tasks, starting with read-only exploration and ending with a feature addition that requires the agent to make decisions about scope.
 

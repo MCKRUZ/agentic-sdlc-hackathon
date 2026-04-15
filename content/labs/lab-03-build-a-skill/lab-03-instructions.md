@@ -1,6 +1,6 @@
 # Lab 03: Build a Skill
 
-**Duration:** 35 minutes
+**Duration:** 30 minutes
 **Track:** All tools
 
 ## Objectives
@@ -240,8 +240,10 @@ A few tools require skills to be configured through a UI rather than a file. Che
 
 ## Stretch Goals
 
-1. **Chain two skills.** Write a second skill that takes the output of the first as input. For example: a "PR description writer" that takes a commit message (from your commit-message skill) and expands it into a full PR body. Trigger them in sequence in one session.
+1. **Try a subagent delegation.** Once your skill is working, try delegating a research task to a subagent instead of handling it in your main session. In Claude Code, tell the agent: "Use a subagent to read through the tests directory and report back what coverage exists and where the biggest gaps are." Compare the result to doing the same investigation inline. Notice that your main context window only receives the summary, not all the exploration work.
 
-2. **Add conditional logic.** Extend your skill to handle two different cases. For example, a code reviewer that behaves differently for test files vs. production code. Use explicit branching in your Instructions section: "If the file path contains `/test`, then... Otherwise..."
+2. **Chain two skills.** Write a second skill that takes the output of the first as input. For example: a "PR description writer" that takes a commit message (from your commit-message skill) and expands it into a full PR body. Trigger them in sequence in one session.
 
-3. **Convert a team process into a skill.** Pick a process from your team's wiki or runbook -- a deployment checklist, an incident postmortem template, a sprint planning format. Convert it into a skill that generates a filled-in version of that document from project context. Run it and evaluate whether it would actually save time in practice.
+3. **Add conditional logic.** Extend your skill to handle two different cases. For example, a code reviewer that behaves differently for test files vs. production code. Use explicit branching in your Instructions section: "If the file path contains `/test`, then... Otherwise..."
+
+4. **Convert a team process into a skill.** Pick a process from your team's wiki or runbook -- a deployment checklist, an incident postmortem template, a sprint planning format. Convert it into a skill that generates a filled-in version of that document from project context. Run it and evaluate whether it would actually save time in practice.
